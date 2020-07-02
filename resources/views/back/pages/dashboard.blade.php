@@ -7,6 +7,10 @@
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0 text-dark">Dashboard</h1>
+          @if (Session::get('message'))
+        <p class="text-success">{{Session::get('message')}}</p>
+              
+          @endif
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -16,7 +20,7 @@
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
-  </div>
+</div>
   <!-- /.content-header -->
 
   <!-- Main content -->

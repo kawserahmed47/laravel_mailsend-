@@ -9,4 +9,8 @@ class DashboardController extends Controller
     public function dashboard(){
         return view('back.pages.dashboard');
     }
+
+    public function allContacts(){
+        return view('back.pages.allContacts');
+    }
 }

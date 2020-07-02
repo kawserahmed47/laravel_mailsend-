@@ -88,5 +88,7 @@
 <script src="{{asset('public/back/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('public/back/dist/js/demo.js')}}"></script>
+
+@yield('extraJS')
 </body>
 </html>
