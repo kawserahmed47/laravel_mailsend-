@@ -10,7 +10,7 @@
           <h1 class="m-0 text-dark">All Contact Information</h1>
           @if (Session::get('message'))
         <p class="text-success">{{Session::get('message')}}</p>
-              
+
           @endif
         </div><!-- /.col -->
         <div class="col-sm-6">
@@ -30,11 +30,11 @@
         <div class="row">
             <div class="col-sm-12">
             <a class="btn btn-info" href="{{route('viewBanker')}}">Banker List</a>
-                <a class="btn btn-warning" href="">Employee List</a>
-                <a class="btn btn-success" href="">Audit List</a>
+                <a class="btn btn-warning" href="{{ route('employeelist') }}">Employee List</a>
+                <a class="btn btn-success" href="{{ route('auditlist') }}">Audit List</a>
             </div>
         </div>
     </div>
 </section>
-    
+
 @endsection

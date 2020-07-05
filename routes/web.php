@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
@@ -37,6 +39,52 @@ Route::get('/dashboard/editBanker/{id}','BankerController@editBanker')->name('ed
 Route::post('/dashboard/updateBanker/{id}','BankerController@updateBanker')->name('updateBanker');
 
 
+//....................employee................
+Route::get('/dashboard/employeeCreate','employeeListController@index')->name('employeeCreate');
+Route::post('/dashboard/createEmployee','employeeListController@create')->name('createEmployee');
+Route::post('/dashboard/updateEmployee/{id}','employeeListController@updateList')->name('updateEmployee');
+Route::get('/dashboard/employeelist','employeeListController@view')->name('employeelist');
+Route::get('dashboard/employeelistedit/{ID}','employeeListController@edit')->name('employeelistedit');
+Route::get('dashboard/employeelistdelete/{ID}','employeeListController@delete')->name('employeelistDelete');
+//.....................audit................
 
+Route::get('/dashboard/auditCreate','auditController@index')->name('auditCreate');
+Route::post('/dashboard/createAudit','auditController@create')->name('createAudit');
+Route::post('/dashboard/updateAudit/{id}','auditController@updateList')->name('updateAudit');
+Route::get('/dashboard/auditlist','auditController@view')->name('auditlist');
+Route::get('dashboard/auditlistedit/{ID}','auditController@edit')->name('auditlistedit');
+Route::get('dashboard/auditdelete/{ID}','auditController@delete')->name('auditDelete');
+
+//...................question.................
+Route::get('/dashboard/addQuestion','QuestionController@addQuestion')->name('addQuestion');
+Route::post('/dashboard/insertQuestion','QuestionController@insertQuestion')->name('insertQuestion');
+Route::get('/dashboard/viewQuestion','QuestionController@viewQuestion')->name('viewQuestion');
+Route::get('/dashboard/deleteQuestion/{id}','QuestionController@deleteQuestion')->name('deleteQuestion');
+Route::get('/dashboard/editQuestion/{id}','QuestionController@editQuestion')->name('editQuestion');
+Route::post('/dashboard/updateQuestion/{id}','QuestionController@updateQuestion')->name('updateQuestion');
+
+//...................company.................
+Route::get('/dashboard/addCompany','CompanyController@addCompany')->name('addCompany');
+Route::post('/dashboard/insertCompany','CompanyController@insertCompany')->name('insertCompany');
+Route::get('/dashboard/viewCompany','CompanyController@viewCompany')->name('viewConpany');
+Route::get('/dashboard/deleteCompany/{id}','CompanyController@deleteCompany')->name('deleteCompany');
+Route::get('/dashboard/editCompany/{id}','CompanyController@editCompany')->name('editCompany');
+Route::post('/dashboard/updateCompany/{id}','CompanyController@updateCompany')->name('updateCompany');
+
+
+//...................certificate.................
+Route::get('/dashboard/addCertificate','CertificateController@addCertificate')->name('addCertificate');
+Route::post('/dashboard/insertCertificate','CertificateController@insertCertificate')->name('insertCertificate');
+Route::get('/dashboard/viewCertificate','CertificateController@viewCertificate')->name('viewCertificate');
+Route::get('/dashboard/deleteCertificate/{id}','CertificateController@deleteCertificate')->name('deleteCertificate');
+Route::get('/dashboard/editCertificate/{id}','CertificateController@editCertificate')->name('editCertificate');
+Route::post('/dashboard/updateCertificate/{id}','CertificateController@updateCertificate')->name('updateCertificate');
+
+
+//Audit Reports
+Route::get('/dashboard/auditReport','AuditReportController@auditReport')->name('auditReport');
+Route::post('/dashboard/insertReport','AuditReportController@insertReport')->name('insertReport');
+Route::get('/dashboard/viewReport','AuditReportController@viewReport')->name('viewReport');
+Route::get('/dashboard/deleteReport/{id}','AuditReportController@deleteReport')->name('deleteReport');
 
 

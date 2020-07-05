@@ -1,9 +1,9 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: green;">
     <!-- Brand Logo -->
 <a href="{{route('index')}}" class="brand-link">
       <img src="{{asset('public/back/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">e-Tex Soft</span>
+      <span class="brand-text font-weight-light" style="color: red;">E-Tex Soft</span>
     </a>
 
     <!-- Sidebar -->
@@ -32,6 +32,7 @@
               </p>
             </a>
           </li>
+{{--            ..............all contacts.......................--}}
           <li class="nav-item has-treeview menu-open">
           <a href="{{route('allContacts')}}" class="nav-link active">
               <i class="nav-icon fas fa-user-alt"></i>
@@ -41,7 +42,7 @@
               </p>
             </a>
           </li>
-       
+{{--            ..............bank.......................--}}
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -66,6 +67,7 @@
               </li>
             </ul>
           </li>
+{{--            ..............banker.......................--}}
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -90,7 +92,7 @@
               </li>
             </ul>
           </li>
-
+{{--...........................employee..................--}}
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -102,20 +104,20 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-              <a href="{{route('addBanker')}}" class="nav-link">
+                  <a href="{{ route('employeeCreate') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Employee</p>
                 </a>
               </li>
               <li class="nav-item">
-              <a href="{{route('viewBanker')}}" class="nav-link">
+                  <a href="{{ route('employeelist') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Employee List</p>
                 </a>
               </li>
             </ul>
           </li>
-        
+{{--...........................Audit..................--}}
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -127,26 +129,140 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-              <a href="{{route('addBanker')}}" class="nav-link">
+                  <a href="{{ route('auditCreate') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Audit</p>
                 </a>
               </li>
               <li class="nav-item">
-              <a href="{{route('viewBanker')}}" class="nav-link">
+                  <a href="{{ route('auditlist') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Audit List</p>
                 </a>
               </li>
             </ul>
           </li>
-        
-        
-        
-        
-        
-       
-         
+
+          {{--.......................question.....................--}}
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                    Question
+                    <i class="fas fa-angle-left right"></i>
+                    {{-- <span class="badge badge-info right">6</span> --}}
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{route('addQuestion')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Add Question</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('viewQuestion')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Question List</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+{{--            .................company.....................--}}
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                    Company
+                    <i class="fas fa-angle-left right"></i>
+                    {{-- <span class="badge badge-info right">6</span> --}}
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{route('addCompany')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Add Company</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('viewConpany')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Company List</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+  
+  {{--            .................Certificate.....................--}}
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                    Certificate
+                    <i class="fas fa-angle-left right"></i>
+                    {{-- <span class="badge badge-info right">6</span> --}}
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{route('addCertificate')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Add Certificate</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('viewCertificate')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Certificate List</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+{{-- -----------------Audit Report---------------}}
+
+<li class="nav-item has-treeview">
+  <a href="#" class="nav-link">
+      <i class="nav-icon fas fa-copy"></i>
+      <p>
+          Audit Report
+          <i class="fas fa-angle-left right"></i>
+          {{-- <span class="badge badge-info right">6</span> --}}
+      </p>
+  </a>
+  <ul class="nav nav-treeview">
+      <li class="nav-item">
+          <a href="{{route('auditReport')}}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Add Report</p>
+          </a>
+      </li>
+      <li class="nav-item">
+      <a href="{{route('viewReport')}}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>View Report</p>
+          </a>
+      </li>
+  </ul>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
