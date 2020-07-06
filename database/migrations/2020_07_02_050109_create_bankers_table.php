@@ -15,7 +15,6 @@ class CreateBankersTable extends Migration
     {
         Schema::create('bankers', function (Blueprint $table) {
             $table->Increments('id');
-            
             $table->integer('bank_id')->unsigned();
             $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade');
             $table->string('name');

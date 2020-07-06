@@ -115,7 +115,7 @@
                             <tr>
                                 {{-- <th scope="row">1</th> --}}
                                 <th style="width: 5%">1</th>
-                                <td style="width:30%">This is Demo Question?
+                                <td style="width:30%">{{$question->question}}
                                 <input type="hidden" name="question_id[]" value="{{$question->id}}">
                                 </td>
                                 <td style="width:20%">
@@ -136,7 +136,7 @@
                                     <label for="">MI</label>
                                     <input type="checkbox" name="evidence_id[{{$question->id}}][]" value="4">
                                 </td>
-                                <td style="width:25%"><textarea name="description[{{$question->id}}][]" id="" cols="20" rows="2"></textarea>
+                                <td style="width:25%"><textarea required name="description[{{$question->id}}][]" id="" cols="20" rows="2"></textarea>
                                 
                                 </td>
                             </tr> 

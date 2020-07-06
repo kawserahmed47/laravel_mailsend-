@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
 use App\Report;
+use Dompdf\Adapter\PDFLib;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -51,6 +54,28 @@ class AuditReportController extends Controller
         $data['results']=Report::all();
          return view('back.pages.auditReport.auditReportView',$data);
         //return $data;
+    }
+
+    public function viewReportDetails($id){
+        $data = array();
+        $data['questions']=Question::all();
+        $data['result']=Report::where('id', $id)->first();
+     
+      //  $pdf = PDF::loadView('back.pages.auditReport.viewReportDetails', $data);
+
+
+        // return $pdf->download('report.pdf');
+       
+   return view('back.pages.auditReport.viewReportDetails',$data);
+
+    }
+    public function generatePdf($id){
+        $data = array();
+        $data['questions']=Question::all();
+        $data['result']=Report::where('id', $id)->first();
+    
+        $pdf = PDF::loadView('back.pages.auditReport.viewReportDetails', $data);
+         return $pdf->download('report.pdf');
     }
 
     public function deleteReport($id){

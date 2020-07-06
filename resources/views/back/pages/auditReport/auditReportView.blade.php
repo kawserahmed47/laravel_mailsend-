@@ -80,7 +80,7 @@
                        
                             <td>
                              <a href="{{route('editCompany',$result->id)}}" class="badge badge-info">Edit</a>
-                             <a href="{{route('editCompany',$result->id)}}" class="badge badge-success">View</a>
+                             <a href="{{route('viewReportDetails',$result->id)}}" class="badge badge-success">View</a>
                              <a  onclick="return confirm('Are you sure?')" class="badge badge-danger" href="{{route('deleteReport',$result->id)}}">Delete</a>
                              </td>
 

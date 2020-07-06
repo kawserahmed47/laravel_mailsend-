@@ -86,5 +86,5 @@ Route::get('/dashboard/auditReport','AuditReportController@auditReport')->name('
 Route::post('/dashboard/insertReport','AuditReportController@insertReport')->name('insertReport');
 Route::get('/dashboard/viewReport','AuditReportController@viewReport')->name('viewReport');
 Route::get('/dashboard/deleteReport/{id}','AuditReportController@deleteReport')->name('deleteReport');
-
-
+Route::get('/dashboard/viewReportDetails/{id}','AuditReportController@viewReportDetails')->name('viewReportDetails');
+Route::get('/dashboard/generatePdf/{id}','AuditReportController@generatePdf')->name('generatePdf');
