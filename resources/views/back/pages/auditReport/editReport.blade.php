@@ -46,12 +46,12 @@
                         
                         <table class="p-3">
                             <tr>
-                                <td style="width:40%"><label for="">Company: </label></td>
+                                <td style="width:40%"><label for="">Company:  </label></td>
                                 <td style="width:60%">
-                                <Select required name="company_id">
-                                    <option value="">--Select Company--</option>
+                                <Select required id="company" name="company_id">
+                                    <option  value="">--Select Company--</option>
                                     @foreach ($companies as $company)
-                                <option value="{{$company->id}}">{{$company->company_name}}</option>
+                                    <option value="{{$company->id}}">{{$company->company_name}}</option>
                                     @endforeach
                                    
                                   
@@ -61,7 +61,7 @@
                             <tr>
                                 <td style="width:40%"><label for="">Certificate: </label></td>
                                 <td style="width:60%">
-                                <Select required name="certificate_id">
+                                <Select required id="certificate" name="certificate_id">
                                     <option value="">--Select Certificate--</option>
                                     @foreach ($certificates as $certificate)
                                 <option value="{{$certificate->id}}">{{$certificate->certificate_name}}</option>
@@ -74,7 +74,7 @@
                             <tr>
                                 <td style="width:40%"><label for="">Stage: </label></td>
                                 <td style="width:60%">
-                                <Select required name="stage">
+                                <Select required id="stage" name="stage">
                                     <option value="">--Select Stage--</option>
                                     <option value="1">Stage One</option>
                                     <option value="2">Stage Two</option>
@@ -110,23 +110,68 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($questions as $key=>$question)
+                                @php
+                                $status = json_decode($result->status_id, true);
+                                $evidence= json_decode($result->evidence_id, true);
+                                $comments= json_decode($result->description, true);
+                                $key=0;
+                                @endphp
+
+                                @foreach ($status as $key=>$item )
                               
                             <tr>
                                 {{-- <th scope="row">1</th> --}}
-                            <th style="width: 5%">{{$key+1}}</th>
-                                <td style="width:30%">{{$question->question}}
+                            <th style="width: 5%">{{$key}}</th>
+                                <td style="width:30%">
+                                    @php
+                                    $question =DB::table('questions')->where('id', $key)->first();
+                                @endphp
+                                {{$question->question}} 
+                                    
+                                  
                                 <input type="hidden" name="question_id[]" value="{{$question->id}}">
                                 </td>
                                 <td style="width:20%">
+
+                                    @foreach ($item as $st)
+                                    
+                                    @if ($st==1)
+                                        <span class="badge badge-secondary">C</span>
+                                        <input type="hidden" id="st1" value="{{$st}}">
+                                    @elseif($st==2)
+                                    <span class="badge badge-secondary">NC</span>
+                                    <input type="hidden" id="st2" value="{{$st}}">
+                                    @elseif($st==3)
+                                        <span class="badge badge-secondary">O</span>
+                                        <input type="hidden" id="st3" value="{{$st}}">
+                                    @else
+                                    X
+                                    @endif
+                                    
+                                    @endforeach
                                     <label for="">C</label>
-                                    <input type="checkbox" name="status_id[{{$question->id}}][]" value="1">
+                                    <input type="checkbox" id="status1" name="status_id[{{$question->id}}][]" value="1">
                                     <label for="">NC</label>
-                                    <input type="checkbox" name="status_id[{{$question->id}}][]" value="2">
+                                    <input type="checkbox" id="status2" name="status_id[{{$question->id}}][]" value="2">
                                     <label for="">O</label>
-                                    <input type="checkbox" name="status_id[{{$question->id}}][]" value="3">
+                                    <input type="checkbox" id="status3" name="status_id[{{$question->id}}][]" value="3">
                                 </td>
                                 <td style="width:20%">
+                                    @foreach ($evidence[$key] as $evi)
+                                    @if ($evi==1)
+                                    <span class="badge badge-secondary">DR</span>
+                                    @elseif($evi==2)
+                                    <span class="badge badge-secondary">P</span>
+                                    @elseif($evi==3)
+                                        <span class="badge badge-secondary">WI</span>
+                                    @elseif($evi==4)
+                                        <span class="badge badge-secondary">MI</span>
+                                    @else
+                                    X
+                                    @endif
+                                  
+                                    @endforeach
+
                                     <label for="">DR</label>
                                     <input type="checkbox" name="evidence_id[{{$question->id}}][]" value="1">
                                     <label for="">P</label>
@@ -136,7 +181,11 @@
                                     <label for="">MI</label>
                                     <input type="checkbox" name="evidence_id[{{$question->id}}][]" value="4">
                                 </td>
-                                <td style="width:25%"><textarea required name="description[{{$question->id}}][]" id="" cols="20" rows="2"></textarea>
+                                <td style="width:25%"><textarea required name="description[{{$question->id}}][]" id="" cols="20" rows="2">
+                                    @foreach ($comments[$key] as $comment)
+                                    {{$comment}}
+                                    @endforeach
+                                </textarea>
                                 
                                 </td>
                             </tr> 
@@ -213,6 +262,28 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('public/back/dist/js/demo.js')}}"></script>
 
+
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+<script>
+$(document).ready(function(){
+
+
+$('#company').val({{$result->company_id}});
+$('#certificate').val({{$result->certificate_id}});
+$('#stage').val({{$result->stage}});
+
+
+var st1 = $("#st1").val();
+var st2 = $("#st2").val();
+var st3 = $("#st3").val();
+
+
+
+
+
+
+});
+</script>
 
 </body>
 </html>

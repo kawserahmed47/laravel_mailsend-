@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Audit;
+use App\Certificate;
+use App\Company;
 use App\Question;
 use App\Report;
 use Dompdf\Adapter\PDFLib;
@@ -13,6 +16,23 @@ use Illuminate\Support\Facades\Session;
 
 class AuditReportController extends Controller
 {
+    // public function __construct()
+    //  {
+    //      $this->middleware('admin');
+    //  }
+
+    public function auditorDashboard(){
+        $data =array();
+        $data['audits']=Report::all()->count();
+        $data['companies']=Company::all()->count();
+        $data['questions']=Question::all()->count();;
+        $data['certificaes']=Certificate::all()->count();;;
+        return view('back.pages.auditorDashboard',$data);
+    }
+
+
+
+
     public function auditReport(){
         $data= array();
         $data['companies']= DB::table('companies')->where('status',1)->get();
@@ -69,6 +89,21 @@ class AuditReportController extends Controller
    return view('back.pages.auditReport.viewReportDetails',$data);
 
     }
+
+    public function editReport($id){
+        $data = array();
+        $data['companies']= DB::table('companies')->where('status',1)->get();
+        $data['certificates']= DB::table('certificates')->where('status',1)->get();
+        $data['questions']= DB::table('questions')->where('status',1)->paginate(20);
+        $data['result']=Report::where('id', $id)->first();
+        return view('back.pages.auditReport.editReport',$data);
+
+    }
+
+
+
+
+
     public function generatePdf($id){
         $data = array();
         $data['questions']=Question::all();
@@ -77,6 +112,8 @@ class AuditReportController extends Controller
         $pdf = PDF::loadView('back.pages.auditReport.viewReportDetails', $data);
          return $pdf->download('report.pdf');
     }
+
+
 
     public function deleteReport($id){
 

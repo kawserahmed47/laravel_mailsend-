@@ -13,11 +13,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/index', function () {
     return view('welcome');
 })->name('index');
 
-Route::get('/dashboard','DashboardController@dashboard')->name('dashboard');
+Route::get('/','DashboardController@dashboard')->name('dashboard');
 Route::get('/dashboard/allContacts','DashboardController@allContacts')->name('allContacts');
 
 
@@ -88,3 +88,21 @@ Route::get('/dashboard/viewReport','AuditReportController@viewReport')->name('vi
 Route::get('/dashboard/deleteReport/{id}','AuditReportController@deleteReport')->name('deleteReport');
 Route::get('/dashboard/viewReportDetails/{id}','AuditReportController@viewReportDetails')->name('viewReportDetails');
 Route::get('/dashboard/generatePdf/{id}','AuditReportController@generatePdf')->name('generatePdf');
+Route::get('/dashboard/editReport/{id}','AuditReportController@editReport')->name('editReport');
+Route::get('/dashboard/auditorDashboard','AuditReportController@auditorDashboard')->name('auditorDashboard');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//Admin Coontroller
+Route::get('/adminLogin','AdminController@adminLogin')->name('adminLogin');
+Route::get('/adminRegister','AdminController@adminRegister')->name('adminRegister');
+Route::post('/registerAdmin','AdminController@registerAdmin')->name('registerAdmin');
+Route::get('/adminLogout','AdminController@adminLogout')->name('adminLogout');
+Route::post('/loginCheck','AdminController@loginCheck')->name('loginCheck');
+
+Route::get('/dashboard/viewAdmins','DashboardController@viewAdmins')->name('viewAdmins');
+Route::get('/dashboard/editAdmin/{id}','DashboardController@editAdmin')->name('editAdmin');
+Route::get('/dashboard/deleteAdmin/{id}','DashboardController@deleteAdmin')->name('deleteAdmin');
