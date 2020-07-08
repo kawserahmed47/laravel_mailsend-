@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Session;
 
 class BankController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
+
     public function addBank(){
         return view('back.pages.bank.addBank');
     }

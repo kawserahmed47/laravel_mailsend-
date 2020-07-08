@@ -38,11 +38,16 @@ class AdminController extends Controller
                             Session::flash('message', 'Authenticating Login Successfull');
                             return redirect()->route('dashboard');
 
-                        }else if($query->role==1){
+                        }else if($query->role==2){
                             Session::flash('message', 'Authenticating Login Successfull');
                             return redirect()->route('auditorDashboard');
 
+                        }else if($query->role==3){
+                            Session::flash('message', 'Authenticating Login Successfull');
+                            return redirect()->route('allContacts');
+
                         }
+
                         else{
                             return redirect()->route('dashboard');
 

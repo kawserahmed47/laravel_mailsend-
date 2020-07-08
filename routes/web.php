@@ -12,6 +12,20 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
+//Admin Coontroller
+Route::get('/adminLogin','AdminController@adminLogin')->name('adminLogin');
+Route::get('/adminRegister','AdminController@adminRegister')->name('adminRegister');
+Route::post('/registerAdmin','AdminController@registerAdmin')->name('registerAdmin');
+Route::get('/adminLogout','AdminController@adminLogout')->name('adminLogout');
+Route::post('/loginCheck','AdminController@loginCheck')->name('loginCheck');
+
+Route::get('/dashboard/viewAdmins','DashboardController@viewAdmins')->name('viewAdmins');
+Route::get('/dashboard/editAdmin/{id}','DashboardController@editAdmin')->name('editAdmin');
+Route::get('/dashboard/deleteAdmin/{id}','DashboardController@deleteAdmin')->name('deleteAdmin');
+
 
 Route::get('/index', function () {
     return view('welcome');
@@ -19,6 +33,7 @@ Route::get('/index', function () {
 
 Route::get('/','DashboardController@dashboard')->name('dashboard');
 Route::get('/dashboard/allContacts','DashboardController@allContacts')->name('allContacts');
+
 
 
 //Bank
@@ -54,6 +69,7 @@ Route::post('/dashboard/updateAudit/{id}','auditController@updateList')->name('u
 Route::get('/dashboard/auditlist','auditController@view')->name('auditlist');
 Route::get('dashboard/auditlistedit/{ID}','auditController@edit')->name('auditlistedit');
 Route::get('dashboard/auditdelete/{ID}','auditController@delete')->name('auditDelete');
+
 
 //...................question.................
 Route::get('/dashboard/addQuestion','QuestionController@addQuestion')->name('addQuestion');
@@ -93,16 +109,7 @@ Route::get('/dashboard/auditorDashboard','AuditReportController@auditorDashboard
 
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Admin Coontroller
-Route::get('/adminLogin','AdminController@adminLogin')->name('adminLogin');
-Route::get('/adminRegister','AdminController@adminRegister')->name('adminRegister');
-Route::post('/registerAdmin','AdminController@registerAdmin')->name('registerAdmin');
-Route::get('/adminLogout','AdminController@adminLogout')->name('adminLogout');
-Route::post('/loginCheck','AdminController@loginCheck')->name('loginCheck');
 
-Route::get('/dashboard/viewAdmins','DashboardController@viewAdmins')->name('viewAdmins');
-Route::get('/dashboard/editAdmin/{id}','DashboardController@editAdmin')->name('editAdmin');
-Route::get('/dashboard/deleteAdmin/{id}','DashboardController@deleteAdmin')->name('deleteAdmin');
+

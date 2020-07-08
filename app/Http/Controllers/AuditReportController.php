@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Session;
 
 class AuditReportController extends Controller
 {
-    // public function __construct()
-    //  {
-    //      $this->middleware('admin');
-    //  }
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
 
     public function auditorDashboard(){
         $data =array();

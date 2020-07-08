@@ -53,18 +53,21 @@
                       <td>{{$result->name }}</td>
                       <td> {{$result->email}} </td>
                      <td>
-                     @if($result->role ==1 )
+                     @if($result->role ==2 )
                     <span class="badge badge-info" >Auditor </span>
-                 @elseif($result->status ==0)
+                 @elseif($result->role ==0)
                  <span class="badge badge-success" >Super admin</span>
+                 @elseif($result->role ==3)
+                 <span class="badge badge-secondary" >Administration</span>
+                 @elseif($result->role ==1)
+                 <span class="badge badge-warning" >New admin</span>
                  @else 
                  <span class="badge badge-danger" > Inactive</span>
                  @endif
                      </td>
                       <td>
-                     
-                      @if ($result->role ==0)
-                      <a class=" badge bg-primary" href="{{route('editAdmin',$result->id)}}">Edit</a>
+                        <a class=" badge bg-primary" href="{{route('editAdmin',$result->id)}}">Edit</a>
+                      @if ($result->role !=0)
                       <a  onclick="return confirm('Are you sure?')" class=" badge bg-danger" href="{{route('deleteAdmin',$result->id)}}">Delete</a>
                       @endif
                       </td>

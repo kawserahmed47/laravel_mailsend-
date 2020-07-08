@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Session;
 
 class CompanyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function addCompany()
     {
         return view('back.pages.company.addCompany');

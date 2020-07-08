@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Session;
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function addQuestion()
     {
         return view('back.pages.question.addQuestion');

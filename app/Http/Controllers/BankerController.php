@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 class BankerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function addBanker(){
         $data = array();
         $data['results']= DB::table('banks')->get();

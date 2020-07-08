@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Session;
 
 class CertificateController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function addCertificate()
     {
         return view('back.pages.certificate.addCertificate');

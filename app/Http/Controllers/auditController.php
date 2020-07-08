@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class auditController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
 
     public function index(){
         return view('back/audit/create');
