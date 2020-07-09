@@ -66,7 +66,14 @@
                             </td>
                             <td>  {{$result->certificate->certificate_name}}  </td>
                         <td>{{$result->stage}}</td>
-                        <td> {{$result->created_at}}</td>
+                        <td>
+                            @if ($result->updated_at == null)
+                            {{$result->created_at}}</td>
+                            @else 
+                            {{$result->updated_at}}</td>
+                            @endif
+                            
+                            
                             <td>
                                 @if($result->status == 1)
                                 <a class="badge badge-success" href="">Successful</a>
@@ -113,6 +120,7 @@
                     </tfoot>
                 </table>
                 </div>
+                {{$results->links()}}
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->

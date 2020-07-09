@@ -16,7 +16,7 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         
-        if(Auth::guard('admin')->check() && Auth::guard('admin')->user()->role ==0  ){
+        if(Auth::guard('admin')->check() && (Auth::guard('admin')->user()->role ==0 || Auth::guard('admin')->user()->role ==99) ){
              return $next($request);
 
         }else{

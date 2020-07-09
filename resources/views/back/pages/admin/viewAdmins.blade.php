@@ -1,6 +1,39 @@
 @extends('back.adminMaster')
 
 @section('content')
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"> 
+      <p id="adminName"></p>
+      <form action="" method="POST">
+        @csrf
+        <input type="text" id="admin_id" name="id" value="">
+        <label for="">Select Role</label>
+        <select name="role" id="">
+          <option value="99">--Select--</option>
+          <option value="2">Auditor</option>
+          <option value="3">Contacts</option>
+        </select>
+      <a href="">Submit</a>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <section class="content-header">
       <div class="container-fluid">
         <div class="row ">
@@ -63,6 +96,9 @@
                  <span class="badge badge-warning" >New admin</span>
                  @else 
                  <span class="badge badge-danger" > Inactive</span>
+                 <button type="button" class="badge badge-danger adminID" data-toggle="modal" data-target="#exampleModal" data-id="{{$result->id }}" data-name="{{ $result->name}}">
+                  Inactive
+                </button>
                  @endif
                      </td>
                       <td>
@@ -103,4 +139,19 @@
         </div><!-- /.container-fluid -->
     </section>
 
+@endsection
+
+@section('extraJS')
+<script>
+  $(".adminID").click(function(){
+    //  $("p").hide();
+    $("#adminName").html($(this).data('name'));
+    $("#admin_id").val($(this).data('id'));
+    // $("#product_name").val($(this).data('name'));
+    // $("#product_price").val($(this).data('price'));
+    // $('#product_type').val($(this).data('product_type'));
+    });
+  
+  </script>
+    
 @endsection

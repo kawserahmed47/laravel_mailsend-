@@ -106,6 +106,7 @@ Route::get('/dashboard/viewReportDetails/{id}','AuditReportController@viewReport
 Route::get('/dashboard/generatePdf/{id}','AuditReportController@generatePdf')->name('generatePdf');
 Route::get('/dashboard/editReport/{id}','AuditReportController@editReport')->name('editReport');
 Route::get('/auditordashboard','AuditReportController@auditorDashboard')->name('auditorDashboard');
+Route::post('/updateReport/{id}','AuditReportController@updateReport')->name('updateReport');
 
 
 Auth::routes();

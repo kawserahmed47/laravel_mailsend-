@@ -47,6 +47,11 @@ class AdminController extends Controller
                             return redirect()->route('allContacts');
 
                         }
+                        else if($query->role==99){
+                            Session::flash('message', 'Authenticating Login Successfull');
+                            return redirect()->route('dashboard');
+
+                        }
 
                         else{
                             return redirect()->route('dashboard');
@@ -102,7 +107,7 @@ class AdminController extends Controller
         $password = $data['password']= Hash::make($request->password);
         $conform_password = $request->conform_password;
         $data['status']=0;
-        $data['role']=0;
+        $data['role']=99;
         $data['created_at']= date("Y-m-d H:i:s",$time);
         
         if (Hash::check($conform_password, $password)) {

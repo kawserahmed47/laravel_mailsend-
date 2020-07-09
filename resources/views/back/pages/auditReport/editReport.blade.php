@@ -35,7 +35,7 @@
             {{-- Column Start --}}
           <div class="col-sm-12 col-md-12">
                     {{-- Form Start --}}
-          <form action="{{route('insertReport')}}" method="POST">
+          <form action="{{route('updateReport',$result->id)}}" method="POST">
                     @csrf
                     <div class="container text-center pt-5">
                     <a class="label label-success" href="{{route('dashboard')}}">   <h1>E-Tex Solution Ltd.</h1></a>
@@ -115,9 +115,12 @@
                                 $evidence= json_decode($result->evidence_id, true);
                                 $comments= json_decode($result->description, true);
                                 $key=0;
+                                $test = count($status);
                                 @endphp
-
+                               
                                 @foreach ($status as $key=>$item )
+                         
+
                               
                             <tr>
                                 {{-- <th scope="row">1</th> --}}
@@ -133,53 +136,87 @@
                                 </td>
                                 <td style="width:20%">
 
+                                   
+                                    <label for="">C</label>
+                                <input type="checkbox" id="status1{{$key}}" name="status_id[{{$question->id}}][]" value="1">
+                                    <label for="">NC</label>
+                                    <input type="checkbox" id="status2{{$key}}" name="status_id[{{$question->id}}][]" value="2">
+                                    <label for="">O</label>
+                                    <input type="checkbox" id="status3{{$key}}" name="status_id[{{$question->id}}][]" value="3">
                                     @foreach ($item as $st)
                                     
                                     @if ($st==1)
                                         <span class="badge badge-secondary">C</span>
-                                        <input type="hidden" id="st1" value="{{$st}}">
+                                        <script>
+                                             document.getElementById("status1"+{{$key}}).checked = true;
+                                             console.log({{$st}});
+                                        </script>
+                                  
                                     @elseif($st==2)
                                     <span class="badge badge-secondary">NC</span>
-                                    <input type="hidden" id="st2" value="{{$st}}">
+                                    <script>
+                                        document.getElementById("status2"+{{$key}}).checked = true;
+                                        console.log({{$st}});
+                                   </script>
+                                   
                                     @elseif($st==3)
+                                    <script>
+                                        document.getElementById("status3"+{{$key}}).checked = true;
+                                        console.log({{$st}});
+                                   </script>
                                         <span class="badge badge-secondary">O</span>
-                                        <input type="hidden" id="st3" value="{{$st}}">
-                                    @else
-                                    X
-                                    @endif
-                                    
-                                    @endforeach
-                                    <label for="">C</label>
-                                    <input type="checkbox" id="status1" name="status_id[{{$question->id}}][]" value="1">
-                                    <label for="">NC</label>
-                                    <input type="checkbox" id="status2" name="status_id[{{$question->id}}][]" value="2">
-                                    <label for="">O</label>
-                                    <input type="checkbox" id="status3" name="status_id[{{$question->id}}][]" value="3">
-                                </td>
-                                <td style="width:20%">
-                                    @foreach ($evidence[$key] as $evi)
-                                    @if ($evi==1)
-                                    <span class="badge badge-secondary">DR</span>
-                                    @elseif($evi==2)
-                                    <span class="badge badge-secondary">P</span>
-                                    @elseif($evi==3)
-                                        <span class="badge badge-secondary">WI</span>
-                                    @elseif($evi==4)
-                                        <span class="badge badge-secondary">MI</span>
+                                       
                                     @else
                                     X
                                     @endif
                                   
                                     @endforeach
+                                </td>
+                                <td style="width:20%">
 
                                     <label for="">DR</label>
-                                    <input type="checkbox" name="evidence_id[{{$question->id}}][]" value="1">
+                                <input type="checkbox" id="evi1{{$key}}" name="evidence_id[{{$question->id}}][]" value="1">
                                     <label for="">P</label>
-                                    <input type="checkbox" name="evidence_id[{{$question->id}}][]" value="2">
+                                    <input type="checkbox" id="evi2{{$key}}" name="evidence_id[{{$question->id}}][]" value="2">
                                     <label for="">WI</label>
-                                    <input type="checkbox" name="evidence_id[{{$question->id}}][]" value="3">
+                                    <input type="checkbox" id="evi3{{$key}}" name="evidence_id[{{$question->id}}][]" value="3">
                                     <label for="">MI</label>
-                                    <input type="checkbox" name="evidence_id[{{$question->id}}][]" value="4">
+                                    <input type="checkbox" id="evi4{{$key}}" name="evidence_id[{{$question->id}}][]" value="4">
+                                   
+                                    @foreach ($evidence[$key] as $evi)
+                                    @if ($evi==1)
+                                    <span class="badge badge-secondary">DR</span>
+                                    <script>
+                                        document.getElementById("evi1"+{{$key}}).checked = true;
+                                        console.log({{$evi}});
+                                   </script>
+                                    @elseif($evi==2)
+                                    <span class="badge badge-secondary">P</span>
+                                    <script>
+                                        document.getElementById("evi2"+{{$key}}).checked = true;
+                                        console.log({{$evi}});
+                                   </script>
+                                    @elseif($evi==3)
+                                        <span class="badge badge-secondary">WI</span>
+                                        <script>
+                                            document.getElementById("evi3"+{{$key}}).checked = true;
+                                            console.log({{$evi}});
+                                       </script>
+                                    @elseif($evi==4)
+                                        <span class="badge badge-secondary">MI</span>
+                                        <script>
+                                            document.getElementById("evi4"+{{$key}}).checked = true;
+                                            console.log({{$evi}});
+                                       </script>
+                                    @else
+                                    X
+                                    @endif
+
+                                    
+                                  
+                                    @endforeach
+                               
+                               
                                 </td>
                                 <td style="width:25%"><textarea required name="description[{{$question->id}}][]" id="" cols="20" rows="2">
                                     @foreach ($comments[$key] as $comment)
@@ -189,7 +226,7 @@
                                 
                                 </td>
                             </tr> 
-                                
+                         
                             @endforeach
                             </tbody>
                             <tfoot class="bg-success">
@@ -203,7 +240,7 @@
                             </tfoot>
                             
                         </table>
-                    <button type="submit" class="btn btn-primary float-right">Submit</button>
+                    <button type="submit" class="btn btn-primary float-right">Update</button>
                     <nav aria-label="...">
                         <ul class="pagination justify-content-center">
                             {{$questions->links()}}
@@ -271,15 +308,6 @@ $(document).ready(function(){
 $('#company').val({{$result->company_id}});
 $('#certificate').val({{$result->certificate_id}});
 $('#stage').val({{$result->stage}});
-
-
-var st1 = $("#st1").val();
-var st2 = $("#st2").val();
-var st3 = $("#st3").val();
-
-
-
-
 
 
 });
