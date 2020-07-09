@@ -10,7 +10,7 @@ class QuestionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('auditor');
     }
     public function addQuestion()
     {

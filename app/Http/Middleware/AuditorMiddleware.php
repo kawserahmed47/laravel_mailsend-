@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
-use  Illuminate\Support\Facades\Redirect;
-class AdminMiddleware
+
+class AuditorMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,12 +15,11 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        
-        if(Auth::guard('admin')->check() && Auth::guard('admin')->user()->role ==0  ){
-             return $next($request);
+        if(Auth::guard('admin')->check() && (Auth::guard('admin')->user()->role ==0 || Auth::guard('admin')->user()->role ==2) ){
+            return $next($request);
 
-        }else{
-            return redirect()->route('adminLogin');
-        }
+       }else{
+           return redirect()->route('adminLogin');
+       }
     }
 }

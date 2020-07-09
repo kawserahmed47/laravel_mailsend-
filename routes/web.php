@@ -105,7 +105,7 @@ Route::get('/dashboard/deleteReport/{id}','AuditReportController@deleteReport')-
 Route::get('/dashboard/viewReportDetails/{id}','AuditReportController@viewReportDetails')->name('viewReportDetails');
 Route::get('/dashboard/generatePdf/{id}','AuditReportController@generatePdf')->name('generatePdf');
 Route::get('/dashboard/editReport/{id}','AuditReportController@editReport')->name('editReport');
-Route::get('/dashboard/auditorDashboard','AuditReportController@auditorDashboard')->name('auditorDashboard');
+Route::get('/auditordashboard','AuditReportController@auditorDashboard')->name('auditorDashboard');
 
 
 Auth::routes();
