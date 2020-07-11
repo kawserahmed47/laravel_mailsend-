@@ -40,6 +40,7 @@ class AuditReportController extends Controller
         $data['certificates']= DB::table('certificates')->where('status',1)->get();
         $data['questions']= DB::table('questions')->where('status',1)->paginate(20);
         return view('back.pages.auditReport.report',$data);
+        //return view('back.pages.auditReport.demoReportInsert',$data);
     }
 
     public function insertReport(Request $request){
@@ -58,7 +59,7 @@ class AuditReportController extends Controller
         $data['status_id']= json_encode($request->status_id);
         $data['evidence_id']=json_encode($request->evidence_id);
         $data['description']=json_encode( $request->description);
-        $data['status']= 1;
+        $data['status']= 0;
         $data['created_by']= Auth::guard('admin')->user()->id;
         $data['created_at']= date("Y-m-d H:i:s",$time);
 
@@ -83,9 +84,7 @@ class AuditReportController extends Controller
         $data['result']=Report::where('id', $id)->first();
      
       //  $pdf = PDF::loadView('back.pages.auditReport.viewReportDetails', $data);
-
-
-        // return $pdf->download('report.pdf');
+    // return $pdf->download('report.pdf');
        
    return view('back.pages.auditReport.viewReportDetails',$data);
 
@@ -111,7 +110,6 @@ class AuditReportController extends Controller
         $data['status_id']= json_encode($request->status_id);
         $data['evidence_id']=json_encode($request->evidence_id);
         $data['description']=json_encode( $request->description);
-        $data['status']= 1;
         $data['updated_by']= Auth::guard('admin')->user()->id;
         $data['updated_at']= date("Y-m-d H:i:s",$time);
 
@@ -146,6 +144,58 @@ class AuditReportController extends Controller
             Session::flash('message','Report Deleted Successfully');
             return redirect()->route('viewReport');
         }
+
+    }
+
+    public function reportStatus($id){
+        $time=time(); 
+        $data = array();
+
+        $query= DB::table('reports')->where('id',$id)->first();
+        if($query->status == 1){
+            $data['status']=0;
+            $data['updated_by']= Auth::guard('admin')->user()->id;
+            $data['updated_at']= date("Y-m-d H:i:s",$time);
+
+            DB::table('reports')->where('id',$id)->update($data);
+            Session::flash('message','Report Status Updated Successfully');
+            return redirect()->route('viewReport');
+        }else if($query->status==0){
+            $data['status']=1;
+            $data['updated_by']= Auth::guard('admin')->user()->id;
+            $data['updated_at']= date("Y-m-d H:i:s",$time);
+
+            DB::table('reports')->where('id',$id)->update($data);
+            Session::flash('message','Report Status Updated Successfully');
+            return redirect()->route('viewReport');
+
+        }
+        
+
+
+    }
+
+    public function searchCompany(Request $request){
+        if($request->get('query'))
+     {
+      $query = $request->get('query');
+      $data = DB::table('companies')
+        ->where('company_name', 'LIKE', "%{$query}%")
+        ->get();
+      $output = '<select class="form-control" name="company_id" id="per1">';
+      foreach($data as $row)
+      {
+        $output .= '
+        <option value="'.$row->id.'">'.$row->company_name.'</option>
+        ';
+    // $output .= '
+    //    <li><a href="#">'.$row->company_name.'</a></li>
+    //    ';
+
+      }
+      $output .= '</select>';
+      echo $output;
+     }
 
     }
 }

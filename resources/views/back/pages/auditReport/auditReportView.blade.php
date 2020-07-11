@@ -76,10 +76,10 @@
                             
                             <td>
                                 @if($result->status == 1)
-                                <a class="badge badge-success" href="">Successful</a>
+                            <a class="badge badge-success" href="{{route('reportStatus',$result->id)}}">Successful</a>
                                    
                                 @else
-                                <a class="badge badge-warning" href="">Pending</a>
+                                <a class="badge badge-warning" href="{{route('reportStatus',$result->id)}}">Pending</a>
                                  
                                 @endif
 

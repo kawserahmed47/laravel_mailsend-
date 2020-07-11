@@ -93,23 +93,25 @@
                                             @endforeach
                                         </td>
                                         <td>
+                                           @if ($evidence[$key])
+                                               
                                            
                                             @foreach ($evidence[$key] as $evi)
                                             @if ($evi==1)
                                             <span class="badge badge-secondary">DR</span>
-                                        @elseif($evi==2)
-                                        <span class="badge badge-secondary">P</span>
-                                        @elseif($evi==3)
+                                            @elseif($evi==2)
+                                            <span class="badge badge-secondary">P</span>
+                                            @elseif($evi==3)
                                             <span class="badge badge-secondary">WI</span>
-                                        @elseif($evi==4)
+                                            @elseif($evi==4)
                                             <span class="badge badge-secondary">MI</span>
-                                        @else
-                                        X
-                                        @endif
+                                            @else
+                                                X
+                                            @endif
                                           
                                             @endforeach
                                           
-                                        
+                                            @endif
                                         </td>
                                         <td>
                                             @foreach ($comments[$key] as $comment)

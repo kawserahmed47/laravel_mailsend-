@@ -38,50 +38,61 @@
           <form action="{{route('updateReport',$result->id)}}" method="POST">
                     @csrf
                     <div class="container text-center pt-5">
-                    <a class="label label-success" href="{{route('dashboard')}}">   <h1>E-Tex Solution Ltd.</h1></a>
+                    <a class="label label-success" href="{{route('viewReport')}}">   <h1>E-Tex Solution Ltd.</h1></a>
                       
                         <p>Audit Question Report For</p>
                         
                         <div style="margin: auto; width:250px"> 
                         
-                        <table class="p-3">
-                            <tr>
-                                <td style="width:40%"><label for="">Company:  </label></td>
-                                <td style="width:60%">
-                                <Select required id="company" name="company_id">
-                                    <option  value="">--Select Company--</option>
-                                    @foreach ($companies as $company)
+                            <table class="p-3">
+                                <tr>
+                                    <td style="width:20%"><label for="">Company: </label></td>
+                                    <td style="width:80%">
+                                        <div class="form-group">
+                                            @php
+                                                $company = DB::table('companies')->where('id',$result->company_id)->first();
+                                            @endphp
+                                            <input type="text" name="country_name" id="country_name" value="{{$company->company_name}}" class="form-control input-lg" placeholder="Search Company" />
+                                            <div id="countryList">
+                                            </div>
+                                           </div>
+                                           <input id="company_id1" type="hidden" name="company_id" value="">
+                                            {{-- {{ csrf_field() }}  --}}
+                                    {{-- <Select required name="company_id">
+                                        <option value="">--Select Company--</option>
+                                        @foreach ($companies as $company)
                                     <option value="{{$company->id}}">{{$company->company_name}}</option>
-                                    @endforeach
-                                   
-                                  
-                                </Select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:40%"><label for="">Certificate: </label></td>
-                                <td style="width:60%">
-                                <Select required id="certificate" name="certificate_id">
-                                    <option value="">--Select Certificate--</option>
-                                    @foreach ($certificates as $certificate)
-                                <option value="{{$certificate->id}}">{{$certificate->certificate_name}}</option>
-                                    @endforeach
-                                    
-                                   
-                                </Select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:40%"><label for="">Stage: </label></td>
-                                <td style="width:60%">
-                                <Select required id="stage" name="stage">
-                                    <option value="">--Select Stage--</option>
-                                    <option value="1">Stage One</option>
-                                    <option value="2">Stage Two</option>
-                                </Select>
-                                </td>
-                            </tr>
-                        </table>
+                                        @endforeach
+                                       
+                                      
+                                    </Select> --}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:20%"><label for="">Certificate: </label></td>
+                                    <td style="width:80%">
+                                    <Select class="form-control" id="certificate" required name="certificate_id">
+                                        <option value="">--Select Certificate--</option>
+                                        @foreach ($certificates as $certificate)
+                                    <option value="{{$certificate->id}}">{{$certificate->certificate_name}}</option>
+                                        @endforeach
+                                        
+                                       
+                                    </Select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:20%"><label for="">Stage: </label></td>
+                                    <td style="width:80%">
+                                    <Select class="form-control" id="stage" required name="stage">
+                                        <option value="">--Select Stage--</option>
+                                        <option value="1">Stage One</option>
+                                        <option value="2">Stage Two</option>
+                                    </Select>
+                                    </td>
+                                </tr>
+                            </table>
+                        
                         </div>
                         @if (Session::get('message'))
                         <p class="text-success"> {{Session::get('message')}} </p>
@@ -146,14 +157,14 @@
                                     @foreach ($item as $st)
                                     
                                     @if ($st==1)
-                                        <span class="badge badge-secondary">C</span>
+                                        {{-- <span class="badge badge-secondary">C</span> --}}
                                         <script>
                                              document.getElementById("status1"+{{$key}}).checked = true;
                                              console.log({{$st}});
                                         </script>
                                   
                                     @elseif($st==2)
-                                    <span class="badge badge-secondary">NC</span>
+                                    {{-- <span class="badge badge-secondary">NC</span> --}}
                                     <script>
                                         document.getElementById("status2"+{{$key}}).checked = true;
                                         console.log({{$st}});
@@ -164,7 +175,7 @@
                                         document.getElementById("status3"+{{$key}}).checked = true;
                                         console.log({{$st}});
                                    </script>
-                                        <span class="badge badge-secondary">O</span>
+                                        {{-- <span class="badge badge-secondary">O</span> --}}
                                        
                                     @else
                                     X
@@ -185,25 +196,25 @@
                                    
                                     @foreach ($evidence[$key] as $evi)
                                     @if ($evi==1)
-                                    <span class="badge badge-secondary">DR</span>
+                                    {{-- <span class="badge badge-secondary">DR</span> --}}
                                     <script>
                                         document.getElementById("evi1"+{{$key}}).checked = true;
                                         console.log({{$evi}});
                                    </script>
                                     @elseif($evi==2)
-                                    <span class="badge badge-secondary">P</span>
+                                    {{-- <span class="badge badge-secondary">P</span> --}}
                                     <script>
                                         document.getElementById("evi2"+{{$key}}).checked = true;
                                         console.log({{$evi}});
                                    </script>
                                     @elseif($evi==3)
-                                        <span class="badge badge-secondary">WI</span>
+                                        {{-- <span class="badge badge-secondary">WI</span> --}}
                                         <script>
                                             document.getElementById("evi3"+{{$key}}).checked = true;
                                             console.log({{$evi}});
                                        </script>
                                     @elseif($evi==4)
-                                        <span class="badge badge-secondary">MI</span>
+                                        {{-- <span class="badge badge-secondary">MI</span> --}}
                                         <script>
                                             document.getElementById("evi4"+{{$key}}).checked = true;
                                             console.log({{$evi}});
@@ -298,14 +309,44 @@
 <script src="{{asset('public/back/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('public/back/dist/js/demo.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+
+    $('#country_name').keyup(function(){ 
+        var query = $(this).val();
+        if(query != '')
+        {
+         var _token = $('input[name="_token"]').val();
+         $.ajax({
+          url:"{{ route('searchCompany') }}",
+          method:"POST",
+          data:{query:query, _token:_token},
+          success:function(data){
+           $('#countryList').fadeIn();  
+                    $('#countryList').html(data);
+          }
+         });
+        }
+    });
+
+    $(document).on('click', 'option', function(){  
+        $('#country_name').val($(this).text());
+        $('#company_id1').val($(this).val());   
+        $('#countryList').fadeOut();  
+    });  
+
+});
+</script>
 
 
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+
 <script>
 $(document).ready(function(){
 
 
-$('#company').val({{$result->company_id}});
+// $('#company').val({{$result->company_id}});
 $('#certificate').val({{$result->certificate_id}});
 $('#stage').val({{$result->stage}});
 

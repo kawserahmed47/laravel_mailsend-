@@ -55,11 +55,11 @@
         <div class="row">
           <div class="col-8">
            
-      <p class="mb-1">
+      {{-- <p class="mb-1">
         <a href="#">I forgot my password</a>
-      </p>
+      </p> --}}
       <p class="mb-0">
-        <a href="{{route('adminRegister')}}" class="text-center">Register a new membership</a>
+        <a class=" badge badge-info" href="{{route('adminRegister')}}" class="text-center">Register</a>
       </p>
           </div>
           <!-- /.col -->
