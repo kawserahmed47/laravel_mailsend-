@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Str;
 use App\Certificate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -10,7 +10,7 @@ class CertificateController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('auditor');
     }
     public function addCertificate()
     {
@@ -23,18 +23,38 @@ class CertificateController extends Controller
 
     public function insertCertificate(Request $request)
     {
-        $CertificateData=new Certificate();
-        $CertificateData->certificate_name = $request->certificate_name;
-        $CertificateData->description = $request->description;
 
-        if(isset($request->status)){
-            $CertificateData->status = true;
-        }else{
-            $CertificateData->status = false;
-        }
-        $CertificateData->save();
-        Session::flash('message','Question Insert Successful!!!');
-        return redirect()->to('/dashboard/viewCertificate');
+        $image=$request->file('image');
+      
+            if($image){
+                $image_name=Str::random(12);
+                $ext=strtolower($image->getClientOriginalExtension());
+                $image_full_name=$image_name.".".$ext;
+                $upload_path='certificateImg/';
+                $image_url=$upload_path.$image_full_name;
+                $success=$image->move($upload_path,$image_full_name);
+                if($success){
+                    $img=$image_url;
+                    $CertificateData=new Certificate();
+                    $CertificateData->certificate_name = $request->certificate_name;
+                    $CertificateData->description = $request->description;
+                    $CertificateData->image=$img;
+                    if(isset($request->status)){
+                    $CertificateData->status = true;
+                    }else{
+                    $CertificateData->status = false;
+                    }
+                    $CertificateData->save();
+                    Session::flash('message','Certificate Insert Successful!!!');
+                    return redirect()->to('/dashboard/viewCertificate');
+                }
+            } else{
+                Session::flash('message','Image not getting!!!');
+                return redirect()->to('/dashboard/viewCertificate');
+
+            }
+
+        
     }
 //
     public function viewCertificate()

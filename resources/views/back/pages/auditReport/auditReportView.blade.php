@@ -34,7 +34,7 @@
                             <!-- Small boxes (Stat box) -->
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a class="btn btn-info" href="{{ route('auditReport') }}">Add Report</a>
+                                    {{-- <a class="btn btn-info" href="{{ route('auditReport') }}">Add Report</a> --}}
                                 </div>
                             </div>
                         </div>

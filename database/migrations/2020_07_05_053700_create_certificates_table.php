@@ -16,8 +16,9 @@ class CreateCertificatesTable extends Migration
         Schema::create('certificates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('certificate_name')->nullable();
+            $table->string('image')->nullable();
             $table->text('description')->nullable();
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->default(true);
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamps();

@@ -28,7 +28,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-            <form action="{{route('insertCertificate')}}" method="POST">
+            <form action="{{route('insertCertificate')}}" method="POST" enctype="multipart/form-data">
 
 {{--
 id	certificate_name	description	status	created_by	updated_by	created_at	updated_at
@@ -36,6 +36,12 @@ id	certificate_name	description	status	created_by	updated_by	created_at	updated_
 
                 @csrf
                   <div class="card-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Description</label>
+                      {{-- <input class="form-control" type="file" name="image"> --}}
+                      <input type='file' name="image" id="imgInp_slider" />
+                      <img style="width: 100px; height: 100px;" id="blah_slider" src="#" alt="Preview" />
+                    </div>
                       <div class="form-group">
                           <label for="exampleInputEmail1">Certificate Name</label>
                           <input type="text" name="certificate_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Certificate Name">
@@ -68,5 +74,27 @@ id	certificate_name	description	status	created_by	updated_by	created_at	updated_
 
  </section>
 
+@endsection
+
+@section('extraJS')
+<script>
+  function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+  
+          reader.onload = function (e) {
+              $('#blah_slider').attr('src', e.target.result);
+          }
+  
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
+  
+  $("#imgInp_slider").change(function(){
+      readURL(this);
+  });
+
+  </script>
+    
 @endsection
 

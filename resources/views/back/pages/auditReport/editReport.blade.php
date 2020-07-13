@@ -44,19 +44,21 @@
                         
                         <div style="margin: auto; width:250px"> 
                         
+                           
                             <table class="p-3">
                                 <tr>
                                     <td style="width:20%"><label for="">Company: </label></td>
                                     <td style="width:80%">
+                                        @php
+                                            $companyName=DB::table('companies')->where('id', $result->company_id)->first();
+                                        @endphp
+                                        {{-- <input id="company_id1" type="text" name="company_id" value=""> --}}
                                         <div class="form-group">
-                                            @php
-                                                $company = DB::table('companies')->where('id',$result->company_id)->first();
-                                            @endphp
-                                            <input type="text" name="country_name" id="country_name" value="{{$company->company_name}}" class="form-control input-lg" placeholder="Search Company" />
-                                            <div id="countryList">
-                                            </div>
+                                            {{-- <input type="text" name="country_name" id="country_name" class="form-control input-lg" placeholder="Search Company" />
+                                             --}}
+                                        <label class="form-control" for="">{{$companyName->company_name}}</label>
                                            </div>
-                                           <input id="company_id1" type="hidden" name="company_id" value="">
+                                         
                                             {{-- {{ csrf_field() }}  --}}
                                     {{-- <Select required name="company_id">
                                         <option value="">--Select Company--</option>
@@ -68,9 +70,20 @@
                                     </Select> --}}
                                     </td>
                                 </tr>
+                                {{-- <tr  class="">
+                                    <td  style="width: 20%"><label id="countryList1" for="">Select:</label></td>
+                                    <td style="width: 80%">
+                                        <div class="form-group">
+                                            <div id="countryList">
+                                            </div>
+                                       
+                                        </div>
+                                    </td>
+                                </tr> --}}
                                 <tr>
                                     <td style="width:20%"><label for="">Certificate: </label></td>
                                     <td style="width:80%">
+                                        <div class="form-group">
                                     <Select class="form-control" id="certificate" required name="certificate_id">
                                         <option value="">--Select Certificate--</option>
                                         @foreach ($certificates as $certificate)
@@ -79,20 +92,23 @@
                                         
                                        
                                     </Select>
+
+                                    </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width:20%"><label for="">Stage: </label></td>
                                     <td style="width:80%">
+                                        <div class="form-group">
                                     <Select class="form-control" id="stage" required name="stage">
                                         <option value="">--Select Stage--</option>
                                         <option value="1">Stage One</option>
                                         <option value="2">Stage Two</option>
                                     </Select>
+                                    </div>
                                     </td>
                                 </tr>
                             </table>
-                        
                         </div>
                         @if (Session::get('message'))
                         <p class="text-success"> {{Session::get('message')}} </p>
@@ -311,8 +327,13 @@
 <script src="{{asset('public/back/dist/js/demo.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-<script>
+
+{{-- <script>
     $(document).ready(function(){
+      
+            $('#countryList1').hide();
+       
+        
 
     $('#country_name').keyup(function(){ 
         var query = $(this).val();
@@ -325,21 +346,29 @@
           data:{query:query, _token:_token},
           success:function(data){
            $('#countryList').fadeIn();  
-                    $('#countryList').html(data);
+            $('#countryList').html(data);
+            $('#countryList1').show();
           }
          });
         }
-    });
+           
 
-    $(document).on('click', 'option', function(){  
-        $('#country_name').val($(this).text());
-        $('#company_id1').val($(this).val());   
-        $('#countryList').fadeOut();  
-    });  
+    
+        
+    });
+    // companynameID
+    // $(document).$("select.onclick").change(function(){
+    //     $('#country_name').val($(this).text());
+    //     $('#company_id1').val($(this).val());   
+    //     $('#countryList').fadeOut();  
+    // });  
+    // $(document).on('click', '#companynameID', function(){  
+    //     $('#country_name').val($(this).text());  
+    //     // $('#countryList').fadeOut();  
+    // }); 
 
 });
-</script>
-
+</script> --}}
 
 
 <script>

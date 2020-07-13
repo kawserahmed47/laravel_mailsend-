@@ -44,52 +44,7 @@
                         
                         <div style="margin: auto; width:250px"> 
                         
-                        <table class="p-3">
-                            <tr>
-                                <td style="width:20%"><label for="">Company: </label></td>
-                                <td style="width:80%">
-                                    <div class="form-group">
-                                        <input type="text" name="country_name" id="country_name" class="form-control input-lg" placeholder="Search Company" />
-                                        <div id="countryList">
-                                        </div>
-                                       </div>
-                                       <input id="company_id1" type="hidden" name="company_id" value="">
-                                        {{-- {{ csrf_field() }}  --}}
-                                {{-- <Select required name="company_id">
-                                    <option value="">--Select Company--</option>
-                                    @foreach ($companies as $company)
-                                <option value="{{$company->id}}">{{$company->company_name}}</option>
-                                    @endforeach
-                                   
-                                  
-                                </Select> --}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:20%"><label for="">Certificate: </label></td>
-                                <td style="width:80%">
-                                <Select class="form-control" required name="certificate_id">
-                                    <option value="">--Select Certificate--</option>
-                                    @foreach ($certificates as $certificate)
-                                <option value="{{$certificate->id}}">{{$certificate->certificate_name}}</option>
-                                    @endforeach
-                                    
-                                   
-                                </Select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:20%"><label for="">Stage: </label></td>
-                                <td style="width:80%">
-                                <Select class="form-control" required name="stage">
-                                    <option value="">--Select Stage--</option>
-                                    <option value="1">Stage One</option>
-                                    <option value="2">Stage Two</option>
-                                </Select>
-                                </td>
-                            </tr>
-                        </table>
-                    
+                          
                         </div>
                         @if (Session::get('message'))
                         <p class="text-success"> {{Session::get('message')}} </p>
@@ -151,7 +106,7 @@
                                         // document.getElementById("myText").value = "Johnny Bravo";
                                         var x = document.getElementById("description"+{{$question->id}}).value;
                                         if(x==""){
-                                        document.getElementById("description"+{{$question->id}}).value ={{$question->id}}+".";
+                                        document.getElementById("description"+{{$question->id}}).value ="   ";
                                         }
                                    </script>
                                 </td>
@@ -205,7 +160,7 @@
 <!-- Bootstrap 4 -->
 <script src="{{asset('public/back/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- ChartJS -->
-{{-- <script src="{{asset('public/back/plugins/chart.js')}}/Chart.min.js')}}"></script> --}}
+<script src="{{asset('public/back/plugins/chart.js')}}/Chart.min.js')}}"></script>
 <!-- Sparkline -->
 <script src="{{asset('public/back/plugins/sparklines/sparkline.js')}}"></script>
 <!-- JQVMap -->
@@ -228,14 +183,16 @@
 <script src="{{asset('public/back/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('public/back/dist/js/demo.js')}}"></script>
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> --}}
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 <script>
     $(document).ready(function(){
+      
+      $('#selectRow').hide();
+       
+        
 
-    $('#country_name').keyup(function(){ 
+    $('#search_company').keyup(function(){ 
         var query = $(this).val();
         if(query != '')
         {
@@ -245,21 +202,50 @@
           method:"POST",
           data:{query:query, _token:_token},
           success:function(data){
-           $('#countryList').fadeIn();  
-                    $('#countryList').html(data);
+            $('#selectRow').show();
+        //    $('#searchList').fadeIn();  
+            $('#companyList').html(data);
+            // $('#countryList1').show();
           }
          });
         }
+           
+
+    
+        
     });
 
-    $(document).on('click', 'option', function(){  
-        $('#country_name').val($(this).text());
-        $('#company_id1').val($(this).val());   
-        $('#countryList').fadeOut();  
-    });  
+ 
+    $(document).ready(function(){
+                                                 
+         $('#companyList').on('change', function() {
+            $('#search_company').val($(this).find(":selected").text());
+            $('#company_id').val($(this).find(":selected").val());
+            var xxxx= $(this).val();
+            console.log(xxxx);
+            // $('#selectRow').hide();
+     
+         });
+     
+     
+     });
+                                            
+                                      
+                                        
+
+ $('#select_tags').on('change', function() {
+         var yyyy= $(this).val();
+         console.log(yyyy);
+
+ });
+ 
+
 
 });
 </script>
+
+
+
 
 </body>
 </html>

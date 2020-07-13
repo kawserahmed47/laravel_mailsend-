@@ -48,27 +48,33 @@
                                 <tr>
                                     <td style="width:20%"><label for="">Company: </label></td>
                                     <td style="width:80%">
+                                        <input id="company_id" type="text" name="company_id" value=""> 
                                         <div class="form-group">
-                                            <input type="text" name="country_name" id="country_name" class="form-control input-lg" placeholder="Search Company" />
-                                            <div id="countryList">
-                                            </div>
-                                           </div>
-                                           <input id="company_id1" type="hidden" name="company_id" value="">
-                                            {{-- {{ csrf_field() }}  --}}
-                                    {{-- <Select required name="company_id">
-                                        <option value="">--Select Company--</option>
-                                        @foreach ($companies as $company)
-                                    <option value="{{$company->id}}">{{$company->company_name}}</option>
-                                        @endforeach
-                                       
-                                      
-                                    </Select> --}}
+                                            <input type="text" name="search_company" id="search_company" class="form-control" placeholder="Search Company" />    
+                                        </div>
+                                         
                                     </td>
                                 </tr>
+                               
+                                <tr  id="selectRow">
+                                    <td  style="width: 20%"><label id="selectLabel" for="">Select:</label></td>
+                                    <td style="width: 80%">
+                                        <div class="form-group">
+                                            <div>
+                                                <select class="form-control" name="" id="companyList">
+
+                                                </select>
+                                            </div>
+                                       
+                                        </div>
+                                    </td>
+                                </tr>
+                           
                                 <tr>
                                     <td style="width:20%"><label for="">Certificate: </label></td>
                                     <td style="width:80%">
-                                    <Select class="form-control" required name="certificate_id">
+                                        <div class="form-group">
+                                    <Select id="select_tags" class="form-control" required name="certificate_id">
                                         <option value="">--Select Certificate--</option>
                                         @foreach ($certificates as $certificate)
                                     <option value="{{$certificate->id}}">{{$certificate->certificate_name}}</option>
@@ -76,16 +82,21 @@
                                         
                                        
                                     </Select>
+
+                                    </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width:20%"><label for="">Stage: </label></td>
                                     <td style="width:80%">
+
+                                        <div class="form-group">
                                     <Select class="form-control" required name="stage">
                                         <option value="">--Select Stage--</option>
                                         <option value="1">Stage One</option>
                                         <option value="2">Stage Two</option>
                                     </Select>
+                                    </div>
                                     </td>
                                 </tr>
                             </table>
@@ -232,8 +243,12 @@
 
 <script>
     $(document).ready(function(){
+      
+      $('#selectRow').hide();
+       
+        
 
-    $('#country_name').keyup(function(){ 
+    $('#search_company').keyup(function(){ 
         var query = $(this).val();
         if(query != '')
         {
@@ -243,21 +258,49 @@
           method:"POST",
           data:{query:query, _token:_token},
           success:function(data){
-           $('#countryList').fadeIn();  
-                    $('#countryList').html(data);
+            $('#selectRow').show();
+        //    $('#searchList').fadeIn();  
+            $('#companyList').html(data);
+            // $('#countryList1').show();
           }
          });
         }
+           
+
+    
+        
     });
 
-    $(document).on('click', 'option', function(){  
-        $('#country_name').val($(this).text());
-        $('#company_id1').val($(this).val());   
-        $('#countryList').fadeOut();  
-    });  
+ 
+    $(document).ready(function(){
+                                                 
+         $('#companyList').on('change', function() {
+            $('#search_company').val($(this).find(":selected").text());
+            $('#company_id').val($(this).find(":selected").val());
+            var xxxx= $(this).val();
+            console.log(xxxx);
+            // $('#selectRow').hide();
+     
+         });
+     
+     
+     });
+                                            
+                                      
+                                        
+
+ $('#select_tags').on('change', function() {
+         var yyyy= $(this).val();
+         console.log(yyyy);
+
+ });
+ 
+
 
 });
 </script>
+
+
 
 
 </body>

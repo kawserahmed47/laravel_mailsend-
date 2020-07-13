@@ -15,7 +15,9 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('question')->nullable();
+            $table->longText('question')->nullable();
+            $table->string('certificate_id')->nullable();
+            $table->integer('stage')->nullable();
             $table->boolean('status')->default(false);
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

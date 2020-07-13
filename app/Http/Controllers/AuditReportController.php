@@ -26,8 +26,9 @@ class AuditReportController extends Controller
         $data =array();
         $data['audits']=Report::all()->count();
         $data['companies']=Company::all()->count();
-        $data['questions']=Question::all()->count();;
-        $data['certificaes']=Certificate::all()->count();;;
+        $data['questions']=Question::all()->count();
+        $data['certificaes']=Certificate::all()->count();
+        $data['results']=Certificate::all();
         return view('back.pages.auditorDashboard',$data);
     }
 
@@ -42,6 +43,16 @@ class AuditReportController extends Controller
         return view('back.pages.auditReport.report',$data);
         //return view('back.pages.auditReport.demoReportInsert',$data);
     }
+
+   public function makeReport($id, $stage){
+       $data= array();
+       $data['certificates']= $id;
+       $data['stage']= $stage;
+       $data['questions']= DB::table('questions')->where('stage',$stage)->where('certificate_id', $id)->paginate(20);
+       return view('back.pages.auditReport.demoReportInsert',$data);
+       //print_r($data);
+
+   }
 
     public function insertReport(Request $request){
 
@@ -103,7 +114,7 @@ class AuditReportController extends Controller
     public function updateReport(Request $request, $id){
         $time=time(); 
         $data = array();
-        $data['company_id']= $request->company_id;
+        // $data['company_id']= $request->company_id;
         $data['certificate_id']= $request->certificate_id;
         $data['stage']= $request->stage;
         $data['question_id']= json_encode($request->question_id );
@@ -182,18 +193,20 @@ class AuditReportController extends Controller
       $data = DB::table('companies')
         ->where('company_name', 'LIKE', "%{$query}%")
         ->get();
-      $output = '<select class="form-control" name="company_id" id="per1">';
+        $output = ' <option value="">'."--Select--".'</option>';
+       $output = '';
       foreach($data as $row)
       {
-        $output .= '
-        <option value="'.$row->id.'">'.$row->company_name.'</option>
-        ';
-    // $output .= '
-    //    <li><a href="#">'.$row->company_name.'</a></li>
-    //    ';
-
+     $output .= '
+     <option value="'.$row->id.'">'.$row->company_name.'</option>
+     ';
+        // $output .= '
+        // <li><a href="'.$row->id.'">'.$row->company_name.'</a></li>
+        // ';
       }
-      $output .= '</select>';
+       $output .= '';
+    // $output .= '</ul>';
+
       echo $output;
      }
 
