@@ -99,7 +99,8 @@ Route::post('/dashboard/updateCertificate/{id}','CertificateController@updateCer
 
 //Audit Reports
 Route::get('/dashboard/auditReport/{id}/{stage}','AuditReportController@makeReport');
-Route::get('/dashboard/auditReport/{id}','AuditReportController@auditReport')->name('auditReport');
+Route::get('/dashboard/auditquestion/{id}/{stage}/{com}','AuditReportController@auditquestion');
+Route::get('/dashboard/auditReport','AuditReportController@auditReport')->name('auditReport');
 Route::post('/dashboard/insertReport','AuditReportController@insertReport')->name('insertReport');
 Route::get('/dashboard/viewReport','AuditReportController@viewReport')->name('viewReport');
 Route::get('/dashboard/deleteReport/{id}','AuditReportController@deleteReport')->name('deleteReport');

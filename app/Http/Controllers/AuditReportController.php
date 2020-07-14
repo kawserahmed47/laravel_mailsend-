@@ -39,9 +39,9 @@ class AuditReportController extends Controller
         $data= array();
         $data['companies']= DB::table('companies')->where('status',1)->get();
         $data['certificates']= DB::table('certificates')->where('status',1)->get();
-        $data['questions']= DB::table('questions')->where('status',1)->paginate(20);
-        return view('back.pages.auditReport.report',$data);
-        //return view('back.pages.auditReport.demoReportInsert',$data);
+        $data['questions']= DB::table('questions')->where('stage',1)->paginate(20);
+       // return view('back.pages.auditReport.report',$data);
+        return view('back.pages.auditReport.demoReportInsert',$data);
     }
 
    public function makeReport($id, $stage){
@@ -49,8 +49,19 @@ class AuditReportController extends Controller
        $data['certificates']= $id;
        $data['stage']= $stage;
        $data['questions']= DB::table('questions')->where('stage',$stage)->where('certificate_id', $id)->paginate(20);
-       return view('back.pages.auditReport.demoReportInsert',$data);
+       //return view('back.pages.auditReport.demoReportInsert',$data);
+       return view('back.pages.auditReport.company',$data);
        //print_r($data);
+
+   }
+
+   public function auditquestion($id, $stage, $com){
+    $data = array();
+    $data['company']= $com;
+    $data['certificate']= $id;
+    $data['stage']= $stage;
+    $data['questions']= DB::table('questions')->where('stage',$stage)->where('certificate_id', $id)->paginate(20);
+    return view('back.pages.auditReport.demoReportInsert',$data);
 
    }
 

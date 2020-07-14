@@ -4,30 +4,46 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class CompanyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('auditor');
     }
     public function addCompany()
     {
-        return view('back.pages.company.addCompany');
+        return view('back.pages.auditReport.company');
     }
 //id	company_name	address	email	phone	mobile	hotline	description	status	created_by	updated_by	created_at	updated_at
 
     public function insertCompany(Request $request)
     {
+        $certificate =$request->certificates_id;
+        $stage =$request->stage;
+        
         $CompanyData=new Company();
         $CompanyData->company_name = $request->company_name;
         $CompanyData->address = $request->address;
+        $CompanyData->standard_name = $request->standard_name;
+        $CompanyData->site_address = $request->site_address;
+        $CompanyData->employees_num = $request->employees_num;
+        $CompanyData->shift_num = $request->shift_num;
         $CompanyData->email = $request->email;
+        $CompanyData->contact = $request->contact;
         $CompanyData->phone = $request->phone;
         $CompanyData->mobile = $request->mobile;
-        $CompanyData->hotline = $request->hotline;
-        $CompanyData->description = $request->description;
+        $CompanyData->scope = $request->scope;
+        $CompanyData->technical_area = $request->technical_area;
+        $CompanyData->exclusion = $request->exclusion;
+        $CompanyData->audit_team = $request->audit_team;
+        $CompanyData->s_audit_date = $request->s_audit_date;
+        $CompanyData->e_audit_date = $request->e_audit_date;
+        $CompanyData->brief = $request->brief;
+        $CompanyData->objective = $request->objective;
+        $CompanyData->status = $request->status;
 
         if(isset($request->status)){
             $CompanyData->status = true;
@@ -35,8 +51,11 @@ class CompanyController extends Controller
             $CompanyData->status = false;
         }
         $CompanyData->save();
-        Session::flash('message','Question Insert Successful!!!');
-        return redirect()->to('/dashboard/viewCompany');
+        $company=$CompanyData->id;
+
+        // print_r($company);
+        Session::flash('message','Company Inserted Successful!!!');
+        return Redirect::to('/dashboard/auditquestion/'.$certificate.'/'.$stage.'/'.$company);
     }
 
     public function viewCompany()
