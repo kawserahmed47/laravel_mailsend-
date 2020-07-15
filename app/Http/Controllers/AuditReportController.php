@@ -12,7 +12,9 @@ use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+
 
 
 class AuditReportController extends Controller
@@ -62,6 +64,50 @@ class AuditReportController extends Controller
     $data['stage']= $stage;
     $data['questions']= DB::table('questions')->where('stage',$stage)->where('certificate_id', $id)->paginate(20);
     return view('back.pages.auditReport.demoReportInsert',$data);
+   }
+
+   public function changesummary($certificate, $stage, $company){
+       $data = array();
+       $data['certificate']= $certificate;
+       $data['stage']=$stage;
+       $data['company']=$company;
+
+    //    print_r($data);
+        return view('back.pages.auditReport.changesummary',$data);
+   // return Redirect::to('/dashboard/auditquestion/'.$certificate.'/'.$stage.'/'.$company);
+   }
+
+  
+
+   public function insertchangesummary(Request $request){
+       $data= array();
+       $certificate =$data['certificate_id'] =$request->certificate_id;
+       $stage       =$data['stage'] = $request->stage;
+       $company     =$data['company_id'] = $request->company_id;
+
+       $data['quoted_man']= $request->quoted_man;
+       $data['employee_detail']= $request->employee_detail;
+       $data['change_scope']= $request->change_scope;
+       $data['additional_information']= $request->additional_information;
+
+       DB::table('changes')->insert($data);
+
+       $data2 = array();
+       $data2['certificate_id']= $certificate;
+       $data2['stage']=    $stage;
+       $data2['company_id']= $company ;
+       $data2['improvement_area']=json_encode($request->improvement_area);
+       $data2['nonconformatise']=$request->nonconformatise;
+       $data2['declaration']=json_encode($request->declaration);
+       $data2['recommendation']=" ";
+       $data2['sign_off_date']=$request->sign_off_date;
+       $data2['auditorName']=$request->auditorName;
+       $data2['clientName']=$request->clientName;
+       $data2['clidentDesignation']=$request->clidentDesignation;
+       DB::table('summaries')->insert($data2);
+
+        return Redirect::to('/dashboard/auditquestion/'.$certificate.'/'.$stage.'/'.$company);
+
 
    }
 
@@ -73,10 +119,10 @@ class AuditReportController extends Controller
             'stage' => 'required',
         ]);
         $time=time(); 
-        $data = array();
-        $data['company_id']= $request->company_id;
-        $data['certificate_id']= $request->certificate_id;
-        $data['stage']= $request->stage;
+        $data= array();
+        $company=$data['company_id']= $request->company_id;
+        $certificate=$data['certificate_id']= $request->certificate_id;
+        $stage=$data['stage']= $request->stage;
         $data['question_id']= json_encode($request->question_id );
         $data['status_id']= json_encode($request->status_id);
         $data['evidence_id']=json_encode($request->evidence_id);
@@ -88,7 +134,8 @@ class AuditReportController extends Controller
         $query = DB::table('reports')->insert($data);
         if($query){
             Session::flash('message','Report Submitted Successfull!!!');
-            return redirect()->route('auditReport');
+             return redirect()->route('auditorDashboard');
+            //return Redirect::to('/dashboard/changesummary/'.$certificate.'/'.$stage.'/'.$company);
         }
     }
 

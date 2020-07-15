@@ -43,7 +43,7 @@ class CompanyController extends Controller
         $CompanyData->e_audit_date = $request->e_audit_date;
         $CompanyData->brief = $request->brief;
         $CompanyData->objective = $request->objective;
-        $CompanyData->status = $request->status;
+        $CompanyData->status = $request->stage;
 
         if(isset($request->status)){
             $CompanyData->status = true;
@@ -55,7 +55,7 @@ class CompanyController extends Controller
 
         // print_r($company);
         Session::flash('message','Company Inserted Successful!!!');
-        return Redirect::to('/dashboard/auditquestion/'.$certificate.'/'.$stage.'/'.$company);
+        return Redirect::to('/dashboard/changesummary/'.$certificate.'/'.$stage.'/'.$company);
     }
 
     public function viewCompany()

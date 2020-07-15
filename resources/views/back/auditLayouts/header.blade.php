@@ -24,6 +24,7 @@
                 <div class="col-50 cName">
 
                     <div id="scroll">
+                   
                         <marquee behavior="scroll" direction="container" scrollamount="10"> <a style="color:green;" href="/" title="Home" class="brand"><b>E-Tex Soft Ltd</b></a>
                         </marquee>
                     </div>
@@ -38,10 +39,9 @@
     <div class="menu">
         <div class="container">
             <ul>
-            <li class="nav-item"><a class="nav-link" href="{{route('addCompany')}}">Company
-                    </a></li>
-                <li class="nav-item"><a class="nav-link" href="about.html">Change Details</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('auditReport')}}">Question</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Company</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Change Details & Summary</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Question</a></li>
                 {{-- <li class="nav-item"><a class="nav-link" href="#">Blog </a>
                     <ul class="sub_menu">
                         <li class="nav-item"><a class="nav-link" href="#">first Page</a></li>

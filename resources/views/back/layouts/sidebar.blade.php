@@ -176,14 +176,14 @@
              
          
           {{--.......................question.....................--}}
-          <li class="nav-item has-treeview">
+          {{-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
                     Question
-                    <i class="fas fa-angle-left right"></i>
+                    <i class="fas fa-angle-left right"></i> --}}
                     {{-- <span class="badge badge-info right">6</span> --}}
-                </p>
+                {{-- </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
@@ -199,16 +199,16 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 {{--            .................company.....................--}}
-        <li class="nav-item has-treeview">
+        {{-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
                     Company
-                    <i class="fas fa-angle-left right"></i>
+                    <i class="fas fa-angle-left right"></i> --}}
                     {{-- <span class="badge badge-info right">6</span> --}}
-                </p>
+                {{-- </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
@@ -224,17 +224,17 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
   
   {{--            .................Certificate.....................--}}
-        <li class="nav-item has-treeview">
+        {{-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
                     Certificate
-                    <i class="fas fa-angle-left right"></i>
+                    <i class="fas fa-angle-left right"></i> --}}
                     {{-- <span class="badge badge-info right">6</span> --}}
-                </p>
+                {{-- </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
@@ -250,7 +250,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 {{-- -----------------Audit Report---------------}}
 
 <li class="nav-item has-treeview">

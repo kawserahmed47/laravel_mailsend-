@@ -97,8 +97,8 @@
                     <form action="{{route('insertCompany')}}" method="POST">
                         {{--                        <a class="span span-success" href="{{route('viewReport')}}">   <h1>E-Tex Solution Ltd.</h1></a>--}}
 
-                        <input type="text" name="certificates_id" value="{{$certificates}}">
-                        <input type="text" name="stage" value="{{$stage}}">
+                        <input type="hidden" name="certificates_id" value="{{$certificates}}">
+                        <input type="hidden" name="stage" value="{{$stage}}">
                         <h2 class="text-center mt-4">Company Information</h2>
                      <p class="text-center text-info">(Insert If New)</p>
                         <table class="table table-bordered m-4   text-center ">
@@ -195,7 +195,7 @@
                         </table>
 
                         {{--                            <button type="submit" class="btn btn-primary">Submit</button>--}}
-                        <button class="btn btn-info float-right mb-5">Submit</button>
+                        <button class="btn btn-info float-right mb-5">Next</button>
                     </form>
 
                 </div>

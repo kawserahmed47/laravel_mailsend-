@@ -11,10 +11,15 @@
                     {{-- Form Start --}}
           <form action="{{route('insertReport')}}" method="POST">
                     @csrf
+          <input type="hidden" name="company_id" value="{{$company}}">
+          <input type="hidden" name="certificate_id" value="{{$certificate}}">
+          <input type="hidden" name="stage" value="{{$stage}}">
+
                     <div class="container text-center pt-5">
                     {{-- <a class="label label-success" href="{{route('viewReport')}}">   <h1>E-Tex Solution Ltd.</h1></a>
                       
                         <p>Audit Question Report For</p> --}}
+                        <p>Audit Checklist</p>
                         
                         <div style="margin: auto; width:250px"> 
                         
@@ -110,7 +115,7 @@
                                 {{-- <th scope="row">1</th> --}}
                             <th style="width: 5%">{{$key+1}}</th>
                                 <td style="width:30%">{{$question->question}}
-                                <input type="hidden" name="question_id[]" value="{{$question->id}}">
+                            <input type="hidden" name="question_id[]" value="{{$question->id}}">
                                 </td>
                                 <td style="width:20%">
                                     <label for="">C</label>
@@ -184,7 +189,7 @@
 @section('extraJS')
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
+{{-- 
 <script>
     $(document).ready(function(){
       
@@ -243,7 +248,7 @@
 
 });
 </script>
-
+ --}}
 
     
 @endsection
