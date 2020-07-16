@@ -111,6 +111,21 @@ class AuditReportController extends Controller
 
    }
 
+   public function updateChange(Request $request, $id){
+    $data = array();
+    $data['quoted_man']= $request->quoted_man;
+    $data['employee_detail']= $request->employee_detail;
+    $data['change_scope']= $request->change_scope;
+    $data['additional_information']= $request->additional_information;
+
+    DB::table('changes')->where('id',$id)->update($data);
+    Session::flash('message','Update Successfull!!!');
+    return redirect()->route('auditorDashboard');
+
+
+
+   }
+
     public function insertReport(Request $request){
 
         $validatedData = $request->validate([
@@ -159,13 +174,55 @@ class AuditReportController extends Controller
 
     }
 
-    public function editReport($id){
+    public function viewChangeDetails($id){
         $data = array();
-        $data['companies']= DB::table('companies')->where('status',1)->get();
-        $data['certificates']= DB::table('certificates')->where('status',1)->get();
-        $data['questions']= DB::table('questions')->where('status',1)->paginate(20);
+        $data['changes']=DB::table('changes')->where('company_id', $id)->first();
+        return view('back.pages.auditReport.changeDetailsView',$data);
+
+
+    }
+
+    public function viewSummaryDetail($id){
+        $data = array();
+        $data['summaries']=DB::table('summaries')->where('company_id', $id)->first();
+        return view('back.pages.auditReport.summaryDetailView',$data);
+
+    }
+
+    public function allDetailsView($id){
+        $data = array();
+        $data['company']=DB::table('companies')->where('id', $id)->first();
+        $data['result']=Report::where('company_id', $id)->first();
+        $data['changes']=DB::table('changes')->where('company_id', $id)->first();
+        $data['summaries']=DB::table('summaries')->where('company_id', $id)->first();
+        return view('back.pages.auditReport.allDetailsView',$data);
+    }
+
+    public function editReport($id){
+
+        $query = DB::table('reports')->where('id', $id)->first();
+        $company = $query->company_id;
+        $stage= $query->stage;
+        $certificate = $query->certificate_id;
+
+
+        $data = array();
+        //  $data['companies']= $company;
+        //  $data['certificates']= $certificate;
+        //  $data['stage']=  $stage;
+        $data['questions']= DB::table('questions')->where('stage',$stage)->where('certificate_id', $certificate)->paginate(20);
         $data['result']=Report::where('id', $id)->first();
         return view('back.pages.auditReport.editReport',$data);
+
+    }
+    public function editChange($id){
+        $data = array();
+        $data['result']=DB::table('changes')->where('company_id', $id)->first();
+        return view('back.pages.auditReport.editChange',$data);
+        
+    }
+
+    public function editSummary($id){
 
     }
 
@@ -197,11 +254,12 @@ class AuditReportController extends Controller
 
     public function generatePdf($id){
         $data = array();
-        $data['questions']=Question::all();
-        $data['result']=Report::where('id', $id)->first();
-    
-        $pdf = PDF::loadView('back.pages.auditReport.viewReportDetails', $data);
-         return $pdf->download('report.pdf');
+        $data['company']=DB::table('companies')->where('id', $id)->first();
+        $data['result']=Report::where('company_id', $id)->first();
+        $data['changes']=DB::table('changes')->where('company_id', $id)->first();
+        $data['summaries']=DB::table('summaries')->where('company_id', $id)->first();
+        $pdf = PDF::loadView('back.pages.auditReport.allDetailsView', $data);
+        return $pdf->download('report.pdf');
     }
 
 

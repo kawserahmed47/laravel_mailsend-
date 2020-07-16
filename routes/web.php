@@ -103,14 +103,30 @@ Route::get('/dashboard/changesummary/{id}/{stage}/{com}','AuditReportController@
 Route::post('/dashboard/insertchangesummary','AuditReportController@insertchangesummary')->name('insertchangesummary');
 Route::get('/dashboard/auditquestion/{id}/{stage}/{com}','AuditReportController@auditquestion');
 
+Route::get('/dashboard/editReport/{id}','AuditReportController@editReport')->name('editReport');
+Route::get('/dashboard/editChange/{id}','AuditReportController@editChange')->name('editChange');
+Route::post('/dashboard/updateChange/{id}','AuditReportController@updateChange')->name('updateChange');
+Route::get('/dashboard/editSummary/{id}','AuditReportController@editSummary')->name('editSummary');
+
 
 Route::get('/dashboard/auditReport','AuditReportController@auditReport')->name('auditReport');
 Route::post('/dashboard/insertReport','AuditReportController@insertReport')->name('insertReport');
 Route::get('/dashboard/viewReport','AuditReportController@viewReport')->name('viewReport');
 Route::get('/dashboard/deleteReport/{id}','AuditReportController@deleteReport')->name('deleteReport');
+
+
+
+
 Route::get('/dashboard/viewReportDetails/{id}','AuditReportController@viewReportDetails')->name('viewReportDetails');
+Route::get('/viewChangeDetails/{id}','AuditReportController@viewChangeDetails')->name('viewChangeDetails');
+Route::get('/viewSummaryDetail/{id}','AuditReportController@viewSummaryDetail')->name('viewSummaryDetail');
+Route::get('/allDetailsView/{id}','AuditReportController@allDetailsView')->name('allDetailsView');
+
+
+
+
 Route::get('/dashboard/generatePdf/{id}','AuditReportController@generatePdf')->name('generatePdf');
-Route::get('/dashboard/editReport/{id}','AuditReportController@editReport')->name('editReport');
+
 Route::get('/auditordashboard','AuditReportController@auditorDashboard')->name('auditorDashboard');
 Route::post('/updateReport/{id}','AuditReportController@updateReport')->name('updateReport');
 Route::get('/reportStatus/{id}','AuditReportController@reportStatus')->name('reportStatus');

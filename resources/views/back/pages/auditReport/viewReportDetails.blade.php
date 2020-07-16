@@ -41,11 +41,11 @@
          $status = json_decode($result->status_id, true);
          $evidence= json_decode($result->evidence_id, true);
          $comments= json_decode($result->description, true);
-         $key=0;
+         $i=1;
          @endphp
          <div class="container mt-5">
          <a href="{{route('generatePdf',$result->id)}}">
-        Audit Report
+        Audit Checklist
         </a>
      
 
@@ -70,7 +70,7 @@
                                     
                                         {{-- @foreach ($status as $key=>$sta && $evidence as $eviden)  --}}
                                         <tr>
-                                            <th scope="row">{{$key}}</th>
+                                            <th scope="row">{{$i++}}</th>
                                             <td>
                                                  @php
                                                     $questions =DB::table('questions')->where('id', $key)->first();

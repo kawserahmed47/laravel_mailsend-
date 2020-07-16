@@ -75,6 +75,7 @@
                             
                             
                             <td>
+                            <a class="badge badge-warning" href="{{route('allDetailsView',$result->company_id)}}">Print</a>
                                 @if($result->status == 1)
                             <a class="badge badge-success" href="{{route('reportStatus',$result->id)}}">Successful</a>
                                    
@@ -86,8 +87,15 @@
                             </td>
                        
                             <td>
-                             <a href="{{route('editReport',$result->id)}}" class="badge badge-info">Edit</a>
-                             <a href="{{route('viewReportDetails',$result->id)}}" class="badge badge-success">View</a>
+                            <a href="{{route('editReport',$result->id)}}" class="badge badge-info">REdit</a>
+
+                            <a href="{{route('editChange',$result->company_id)}}" class="badge badge-info">CEdit</a>
+
+                            <a href="{{route('editSummary',$result->company_id)}}" class="badge badge-info">SEdit</a>
+
+                             <a href="{{route('viewChangeDetails',$result->company_id )}}" class="badge badge-success">Change</a>
+                             <a href="{{route('viewSummaryDetail',$result->company_id )}}" class="badge badge-success">Summary</a>
+                             <a href="{{route('viewReportDetails',$result->id)}}" class="badge badge-success">Checklist</a>
                              <a  onclick="return confirm('Are you sure?')" class="badge badge-danger" href="{{route('deleteReport',$result->id)}}">Delete</a>
                              </td>
 

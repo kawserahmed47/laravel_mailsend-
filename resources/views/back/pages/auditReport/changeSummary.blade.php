@@ -366,13 +366,13 @@
 
                             <tr style="height: 50px;" class="text-left center">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[1][]" id="a">
+                                        <input type="radio" class="form-check-input" name="declaration[1][]" value="1" id="a">
                                         <label class="" for="defaultInline3"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[1][]" id="a">
+                                        <input type="radio" class="form-check-input" name="declaration[1][]" value="0" id="a">
                                         <label class="" for="defaultInline4"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -384,13 +384,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[2][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[2][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[2][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[2][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -400,13 +400,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[3][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[3][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[3][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[3][]"  value="0"id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -416,13 +416,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[4][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[4][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[4][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[4][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -432,13 +432,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[5][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[5][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[5][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[5][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -448,13 +448,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[6][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[6][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[6][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[6][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -464,13 +464,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[7][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[7][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[7][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[7][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -481,13 +481,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[8][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[8][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[8][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[8][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -498,13 +498,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[9][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[9][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[9][]" id="b">
+                                        <input type="radio" class="form-check-input" name="declaration[9][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
