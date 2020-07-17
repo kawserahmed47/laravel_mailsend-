@@ -100,7 +100,7 @@
                         <input type="hidden" name="certificates_id" value="{{$certificates}}">
                         <input type="hidden" name="stage" value="{{$stage}}">
                         <h2 class="text-center mt-4">Company Information</h2>
-                     <p class="text-center text-info">(Insert If New)</p>
+                     {{-- <p class="text-center text-info">(Insert If New)</p> --}}
                         <table class="table table-bordered m-4   text-center ">
                             @csrf
                             <tbody>

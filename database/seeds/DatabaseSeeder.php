@@ -9,8 +9,10 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         //$this->call(questionStageOne::class);
-        $this->call(questionStageTwo::class);
+       // $this->call(questionStageTwo::class);
         // $this->call(QuestionStageTwoSeeder::class);
+        //$this->call(BankSeeder::class);
+        $this->call(BankerSeeder::class);
 
 
     }

@@ -191,6 +191,7 @@ class AuditReportController extends Controller
 
     public function allDetailsView($id){
         $data = array();
+        // $data['header']="";
         $data['company']=DB::table('companies')->where('id', $id)->first();
         $data['result']=Report::where('company_id', $id)->first();
         $data['changes']=DB::table('changes')->where('company_id', $id)->first();
@@ -254,6 +255,7 @@ class AuditReportController extends Controller
 
     public function generatePdf($id){
         $data = array();
+        // $data['header'] ='Welcome to E-Tex Solution';
         $data['company']=DB::table('companies')->where('id', $id)->first();
         $data['result']=Report::where('company_id', $id)->first();
         $data['changes']=DB::table('changes')->where('company_id', $id)->first();

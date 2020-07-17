@@ -72,9 +72,9 @@
                             <td>{{$result->name}} </td>
                             <td>{{$result->designation}}  </td>
                             <td>{{$result->address}}  </td>
-                            <td>{{$result->email}}  </td>
-                            <td>{{$result->phone}}  </td>
-                            <td>{{$result->mobile}}  </td>
+                            <td> <a href="mailto:{{$result->email}}">{{$result->email}}</a>    </td>
+                            <td><a href="tel:{{$result->phone}}"> {{$result->phone}}</a>    </td>
+                            <td><a href="tel:{{$result->mobile}}"> {{$result->mobile}}</a>  </td>
                             <td>
                             <a class=" badge bg-info" href="{{route('editBanker',$result->id)}}">Edit</a>
                                 <a  onclick="return confirm('Are you sure?')" class=" badge bg-danger" href="{{route('deleteBanker',$result->id)}}">Delete</a>

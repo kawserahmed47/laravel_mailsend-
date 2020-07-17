@@ -26,23 +26,73 @@
   {{-- <link rel="stylesheet" href="{{asset('public/back/plugins/summernote/summernote-bs4.css')}}"> --}}
   <!-- Google Font: Source Sans Pro -->
   {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
-  <style>
-    @page { margin: 180px 50px; }
-    #header { position: fixed; left: 0px; top: -180px; right: 0px; height: 80px; background-color: white; text-align: center; }
-    #footer { position: fixed; left: 0px; bottom: -180px; right: 0px; height: 80px; background-color: white; }
-    #footer .page:after { content: counter(page, upper-roman); }
-</style>
+<style>
+    .pagenum:before {
+         content: counter(page);
+     }
+ </style>
+<style>
+    @page { margin: 100px 25px; }
+    header { position: fixed; top: -60px; left: 0px; right: 0px; background-color:white; height:100px; margin-bottom: 10px; }
+    footer { position: fixed; bottom: -60px; left: 0px; right: 0px; background-color:white; height: 70px; }
+    p { page-break-after: always; }
+    p:last-child { page-break-after: never; }
+  </style>
 </head>
-<body style="font-size:12px;" class="hold-transition sidebar-mini layout-fixed">
-    <div id="header">
-    <img style="height: 100px; width:100px" src="{{asset('public/aimage/logo.jpg')}}" alt="logo">
-
-    </div>
+<body style="font-size:11px;" class="layout-fixed">
+    <header>
+        <table style=" border-top-style:hidden;" class="table">
+            <tr>
+                <td >
+                    <label for="">Document</label><br>
+                    <label for="">E-TXF22</label>
+                    
+     
+                </td>
+                <td >
+                    <label for="">Issue</label><br>
+                    <label for="">01</label>
+     
+                </td>
+                <td >
+                    <label for="">Date</label><br>
+                    <label for="">{{$company->s_audit_date}}</label>
+                </td>
+                <td class="float-right">
+                <img style="height:50px; width:50px" src="{{asset('public/aimage/logo.jpg')}}" alt="LOGO">
+               <br>
+               Page/
+               <span class="pagenum"></span>
+                </td>
+            </tr>
+          
+        </table>
+    </header>
+    <footer>
+        <div class="mt-3">
+            <hr>
+        </div>
+        <table>
+            <tr>
+                <td class="text-left" style="width: 50%">
+                    Sustainable Management System Inc. 
+                    
+                </td>
+                <td class="text-right" style="width: 50%">
+                    Private & Confidential
+                   
+                </td>
+            </tr>
+        </table>
+    </footer>
+    
 <div class="wrapper">
     {{-- Content --}}
   <div style="display: block; position:block;" class="container-fluid">
-      <div class="row">
+   
+      <div class="row" style="margin-top: 85px;">
             {{-- Column Start --}}
+      
 
         @php
          $improvement_area =  json_decode($summaries->improvement_area, true);
@@ -59,10 +109,16 @@
 
 
           <div class="col-sm-12 col-md-12 mt-3">
+            
+            
+
+
               <table>
                   <tr>
                       <td>
+                        <label class="text-center" for="">
                         <strong>Stage {{$changes->stage}} Audit Report</strong>
+                        </label>
                       </td>
                       <td> 
                       <a class="badge badge-success float-right" href="{{route('generatePdf',$changes->company_id)}}">Print PDF</a>
@@ -142,7 +198,9 @@
                 </tr>
                 
               </table>
-              
+              <br>
+              <br>
+              <br>
               <strong>Change Details</strong>
               <table class="table table-bordered">
                   <tr>
@@ -165,8 +223,10 @@
                     <td> {{$changes->additional_information}}</td>
                   </tr>
               </table>
+              <br>
+              <br>
                
-              <strong>Summary of Audit Stage {{$summaries->stage}}</strong>
+              <strong>Summary of Audit</strong>
 
              <table class="table table-bordered">
                  <tr>
@@ -190,7 +250,7 @@
 
              </table>
 
-
+<br><br>
 
               <table class="table table-bordered">
                   <tr>
@@ -198,7 +258,7 @@
                   </tr>
                   <tr>
                       <td>
-                      <u> <strong> ...{{$summaries->nonconformatise }}... </strong></u> Minor  Non conformance identified in the Stage 1 audit, details of Non Conformance in  F50.
+                      <u> <strong> {{$summaries->nonconformatise }}</strong></u> Minor  Non conformance identified in the Stage 1 audit, details of Non Conformance in  F50.
                         Please respond by using your own corrective action form and include the root cause analysis with systemic corrective action. Failure to include root cause analysis with systemic corrective action will result in your responses being rejected by Lead Auditor
                         
 
@@ -206,22 +266,35 @@
                   </tr>
               </table>
               <br>
-              
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
               <table class="table table-bordered">
                 <tr>
                     <td colspan="2" >
                         <strong>Team Leader Declaration  (Tick  or cross Each Column as per applicability)</strong><br>
-                      
-
                    
                    </td>
-                  
-                  
                 </tr>
               @foreach ($declaration as $key=>$declear)
                 <tr>
                 @foreach ($declear as $dec)  
-                <td >{{$dec}}</td> 
+                <td>
+                    {{-- {{$dec}} --}}
+                     @if ($dec==1)
+                   
+                        <p>  &#10003; </p>
+
+                    @elseif($dec==0)
+                    <p> &#10005; </p>
+
+                        
+                    @endif 
+                
+                
+                </td> 
                 <td>
                     @if ($key==1)
                         <span>Auditing is based on a sampling process of the available information</span>
@@ -262,7 +335,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Recommend not proceeding to stage 2 until audit evidence has been submitted to SMS Inc. showing that the concerns raised by the auditor (s) have been rectified. A date for stage 2 will then be agreed.</td>
+                    <td>Recommend not proceeding to stage 2 until audit evidence has been submitted to E-Tex Solution Ltd. showing that the concerns raised by the auditor (s) have been rectified. A date for stage 2 will then be agreed.</td>
 
                 </tr>
                 <tr>
@@ -279,7 +352,7 @@
 
                   </tr>
                   <tr>
-                      <td>SMS Inc. Report Submission</td>
+                      <td>E-Tex Solution Ltd. Report Submission</td>
                       <td>Client Acceptance for Report </td>
                       
                 </tr>
@@ -299,6 +372,9 @@
                 </tr>
 
               </table>
+              <br>
+              <br>
+              <br>
               <br>
               <strong>AUDIT CHECKLIST</strong>
               <table class="table table-bordered">
@@ -378,9 +454,12 @@
     </div>
       {{-- End Content --}}
   </div>
-  <div id="footer">
 
-</div>
+  
+  {{-- <div id="footer">
+
+</div> --}}
+
   <!-- ./wrapper -->
   <!-- jQuery -->
   <script src="{{asset('public/back/plugins/jquery/jquery.min.js')}}"></script>
@@ -416,7 +495,8 @@
   <script src="{{asset('public/back/dist/js/pages/dashboard.js')}}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('public/back/dist/js/demo.js')}}"></script>
-  <script type="text/php">
+
+  {{-- <script >
     if ( isset($pdf) ) {
         // OLD 
         // $font = Font_Metrics::get_font("helvetica", "bold");
@@ -434,7 +514,7 @@
         $pdf->page_text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);
     }
 </script>
-  
+   --}}
   </body>
   </html>
   

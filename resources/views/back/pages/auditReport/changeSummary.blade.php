@@ -542,7 +542,7 @@
                             <tbody>
 
                             <tr style="height: 50px;">
-                                <td scope="col" class="" colspan="2" style="width: 30%;"><strong>Sign Off :</strong><input class="form-control-sm" type="date" name="sign_off_date">  </td>
+                                <td scope="col" class="" colspan="2" style="width: 30%;"><strong>Sign Off :</strong><input class="form-control-sm" type="text" name="sign_off_date">  </td>
                                 {{-- <td><input type="date" name="sign_off_date"> </td> --}}
                                 {{--                                <td scope="col" ><input type="text" name="company_name" class=" table-striped form-control ninput-lg " style="border: none;"> </td>--}}
                             </tr>
