@@ -7,7 +7,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
-  {{-- <link rel="stylesheet" href="{{asset('public/back/plugins/fontawesome-free/css/all.min.css')}}"> --}}
+   {{-- <link rel="stylesheet" href="{{asset('public/back/plugins/fontawesome-free/css/all.min.css')}}"> --}}
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
   <!-- Tempusdominus Bbootstrap 4 -->
@@ -26,6 +26,22 @@
   {{-- <link rel="stylesheet" href="{{asset('public/back/plugins/summernote/summernote-bs4.css')}}"> --}}
   <!-- Google Font: Source Sans Pro -->
   {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
+  <style>
+    @font-face {
+        font-family: 'fontawesome3';
+        src: url('{{asset('public/font-awesome/font/fontawsome-webfont')}}')format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    .fa3 {
+        display: inline-block;
+        font: normal normal normal 14px/1 fontawesome3;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+</style>
 <style>
     .pagenum:before {
          content: counter(page);
@@ -282,16 +298,22 @@
                 <tr>
                 @foreach ($declear as $dec)  
                 <td>
-                    {{-- {{$dec}} --}}
+                     {{-- {{$dec}}  --}}
                      @if ($dec==1)
+                      <img style="height:20px; width:20px" src="{{asset('public/aimage/tick.png')}}" alt="tick"> 
+
+                      {{-- <i class="fa3 fa-star checked"></i>  --}}
+
+                     {{-- <i class="fa3"> &#10003; </i> --}}
+                     {{-- <i class="fa3 fa fa-file-pdf-o"></i> --}}
                    
-                        <p>  &#10003; </p>
+                         {{-- <p>  &#10003; </p>  --}}
 
                     @elseif($dec==0)
-                    <p> &#10005; </p>
-
+                    {{-- <p> &#10005; </p> --}}
+                    <img style="height:20px; width:20px" src="{{asset('public/aimage/cross1.png')}}" alt="cross"> 
                         
-                    @endif 
+                    @endif  
                 
                 
                 </td> 

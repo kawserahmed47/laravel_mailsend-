@@ -5,6 +5,7 @@ use Illuminate\Support\Str;
 use App\Certificate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use PDF;
 
 class CertificateController extends Controller
 {
@@ -90,5 +91,23 @@ class CertificateController extends Controller
         }
         $CertificateData->save();
         return redirect()->to('/dashboard/viewCertificate');
+    }
+
+
+
+    public function createCertificate(){
+        return view('back.pages.certificate.createCertificate');
+    }
+
+    public function certificateGenerate(){
+        // $data = array();
+        // // $data['header'] ='Welcome to E-Tex Solution';
+        // $data['company']=DB::table('companies')->where('id', $id)->first();
+        // $data['result']=Report::where('company_id', $id)->first();
+        // $data['changes']=DB::table('changes')->where('company_id', $id)->first();
+        // $data['summaries']=DB::table('summaries')->where('company_id', $id)->first();
+        $pdf = PDF::loadView('back.pages.certificate.createCertificate');
+        return $pdf->download('certificate.pdf');
+
     }
 }

@@ -95,7 +95,8 @@ Route::get('/dashboard/viewCertificate','CertificateController@viewCertificate')
 Route::get('/dashboard/deleteCertificate/{id}','CertificateController@deleteCertificate')->name('deleteCertificate');
 Route::get('/dashboard/editCertificate/{id}','CertificateController@editCertificate')->name('editCertificate');
 Route::post('/dashboard/updateCertificate/{id}','CertificateController@updateCertificate')->name('updateCertificate');
-
+Route::get('/dashboard/createCertificate','CertificateController@createCertificate')->name('createCertificate');
+Route::get('/dashboard/certificateGenerate','CertificateController@certificateGenerate')->name('certificateGenerate');
 
 //Audit Reports
 Route::get('/dashboard/auditReport/{id}/{stage}','AuditReportController@makeReport');
