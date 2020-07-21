@@ -36,38 +36,38 @@
                   <div class="card-body">
                       <div class="form-group">
                           <label for="exampleInputEmail1">Company Name</label>
-                          <input type="text" name="company_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Company Name">
+                          <input type="text" required name="company_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Company Name">
                       </div>
 
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Company Address</label>
-                        <textarea class="form-control" name="address" rows="3" placeholder="Enter Address "></textarea>
+                        <textarea class="form-control" required name="address" rows="3" placeholder="Enter Address "></textarea>
                       </div>
 
                       <div class="form-group">
                           <label for="exampleInputEmail1">Email</label>
-                          <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Email">
+                          <input type="email" required name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Email">
                       </div>
 
                       <div class="form-group">
                           <label for="exampleInputEmail1">Phone</label>
-                          <input type="text" name="phone" class="form-control" id="exampleInputEmail1" placeholder="Enter Phone">
+                          <input type="text" required name="phone" class="form-control" id="exampleInputEmail1" placeholder="Enter Phone">
                       </div>
 
                       <div class="form-group">
                           <label for="exampleInputEmail1">Mobile</label>
-                          <input type="text" name="mobile" class="form-control" id="exampleInputEmail1" placeholder="Enter Mobile">
+                          <input type="text" required name="mobile" class="form-control" id="exampleInputEmail1" placeholder="Enter Mobile">
                       </div>
 
                       <div class="form-group">
                           <label for="exampleInputEmail1">Hot Line</label>
-                          <input type="text" name="hotline" class="form-control" id="exampleInputEmail1" placeholder="Enter Hot Line">
+                          <input type="text" required name="hotline" class="form-control" id="exampleInputEmail1" placeholder="Enter Hot Line">
                       </div>
 
                       <div class="form-group">
                           <label for="exampleInputEmail1">Description</label>
-                          <textarea class="form-control" name="description" rows="3" placeholder="Enter Description "></textarea>
+                          <textarea class="form-control" required name="description" rows="3" placeholder="Enter Description "></textarea>
                       </div>
 
 

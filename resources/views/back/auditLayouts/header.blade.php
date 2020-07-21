@@ -3,7 +3,7 @@
         <!-- header start..... -->
         <div class="header">
             <div class="logo">
-                <h4 ><a href="index.html">Home</a></h4>
+            <h4 ><a href="{{route('auditorDashboard')}}">Home</a></h4>
             </div>
             {{-- <div class="userArea">
                 <a href="#">Log In</a>

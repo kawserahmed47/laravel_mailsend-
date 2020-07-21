@@ -21,18 +21,27 @@ Route::get('/adminRegister','AdminController@adminRegister')->name('adminRegiste
 Route::post('/registerAdmin','AdminController@registerAdmin')->name('registerAdmin');
 Route::get('/adminLogout','AdminController@adminLogout')->name('adminLogout');
 Route::post('/loginCheck','AdminController@loginCheck')->name('loginCheck');
+Route::post('/changeRole','AdminController@changeRole')->name('changeRole');
 
 Route::get('/dashboard/viewAdmins','DashboardController@viewAdmins')->name('viewAdmins');
-Route::get('/dashboard/editAdmin/{id}','DashboardController@editAdmin')->name('editAdmin');
-Route::get('/dashboard/deleteAdmin/{id}','DashboardController@deleteAdmin')->name('deleteAdmin');
+Route::get('/dashboard/editAdmin/{id}','AdminController@editAdmin')->name('editAdmin');
+Route::post('/dashboard/updateAdmin/{id}','AdminController@updateAdmin')->name('updateAdmin');
+Route::get('/dashboard/deleteAdmin/{id}','AdminController@deleteAdmin')->name('deleteAdmin');
 
 
 Route::get('/index', function () {
     return view('welcome');
 })->name('index');
 
+//Dashboard Controller 
+
 Route::get('/','DashboardController@dashboard')->name('dashboard');
 Route::get('/dashboard/allContacts','DashboardController@allContacts')->name('allContacts');
+// Route::get('/administrationdashboard','DashboardController@allContacts')->name('administration');
+Route::get('/auditordashboard','AuditReportController@auditorDashboard')->name('auditorDashboard');
+Route::get('/ceodashboard', 'DashboardController@ceodashboard')->name('ceodashboard');
+
+
 
 
 
@@ -95,8 +104,9 @@ Route::get('/dashboard/viewCertificate','CertificateController@viewCertificate')
 Route::get('/dashboard/deleteCertificate/{id}','CertificateController@deleteCertificate')->name('deleteCertificate');
 Route::get('/dashboard/editCertificate/{id}','CertificateController@editCertificate')->name('editCertificate');
 Route::post('/dashboard/updateCertificate/{id}','CertificateController@updateCertificate')->name('updateCertificate');
-Route::get('/dashboard/createCertificate','CertificateController@createCertificate')->name('createCertificate');
-Route::get('/dashboard/certificateGenerate','CertificateController@certificateGenerate')->name('certificateGenerate');
+Route::get('/createCertificate/{id}','CertificateController@createCertificate')->name('createCertificate');
+Route::get('/certificateGenerate/{id}','CertificateController@certificateGenerate')->name('certificateGenerate');
+Route::get('/dashboard/viewReportCertificateable','CertificateController@viewReportCertificateable')->name('viewReportCertificateable');
 
 //Audit Reports
 Route::get('/dashboard/auditReport/{id}/{stage}','AuditReportController@makeReport');
@@ -128,7 +138,10 @@ Route::get('/allDetailsView/{id}','AuditReportController@allDetailsView')->name(
 
 Route::get('/dashboard/generatePdf/{id}','AuditReportController@generatePdf')->name('generatePdf');
 
-Route::get('/auditordashboard','AuditReportController@auditorDashboard')->name('auditorDashboard');
+
+
+
+
 Route::post('/updateReport/{id}','AuditReportController@updateReport')->name('updateReport');
 Route::get('/reportStatus/{id}','AuditReportController@reportStatus')->name('reportStatus');
 Route::post('/searchCompany','AuditReportController@searchCompany')->name('searchCompany');

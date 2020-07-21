@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" >
     <!-- Brand Logo -->
-<a href="{{url('/')}}" class="brand-link">
-      <img src="{{asset('public/back/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+<a href="https://e-texsolution.com/new/" target="_blank" class="brand-link">
+      <img src="{{asset('public/aimage/esoftlogo.jpg')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-2"
            style="opacity: .8">
       <span class="brand-text font-weight-light" > <strong> E-Soft Ltd. </strong></span>
     </a>
@@ -13,7 +13,13 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('public/back/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+          @if (Auth::guard('admin')->user()->image)
+          <img src="{{asset(Auth::guard('admin')->user()->image)}}" class="img-circle elevation-2" alt="User Image">
+          @else
+          <img src="{{asset('public/back/dist/img/admindemo.jpg')}}" class="img-circle elevation-2" alt="User Image">
+              
+          @endif
+         
         </div>
         <div class="info">
           <a href="#" class="d-block"> {{Auth::guard('admin')->user()->name}}</a>
@@ -25,32 +31,45 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          @if ($adminRole ==0 )
+          @if ($adminRole ==1 )
            <li class="nav-item has-treeview menu-open">
             <a href="{{route('dashboard')}}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Developer Dashboard  
                 {{-- <i class="right fas fa-angle-left"></i> --}}
                </p>
             </a>
           </li>  
           @endif
-          @if ($adminRole ==3 ||$adminRole ==0 )
+          @if ($adminRole ==2 ||$adminRole ==1 )
     
-{{--            ..............all contacts.......................--}}
+          {{--    ....all contacts.......................--}}
+     <li class="nav-item has-treeview menu-open">
+    <a href="{{route('ceodashboard')}}" class="nav-link active">
+        <i class="nav-icon fas fa-user-alt"></i>
+        <p>
+          Dashboard
+          {{-- <i class="right fas fa-angle-left"></i> --}}
+       </p>
+      </a>
+    </li>  
+    @endif
+          @if ($adminRole ==3 ||$adminRole ==1 )
+    
+                {{--    ....all contacts.......................--}}
            <li class="nav-item has-treeview menu-open">
           <a href="{{route('allContacts')}}" class="nav-link active">
               <i class="nav-icon fas fa-user-alt"></i>
               <p>
-                All Contacts
+                Administration 
                 {{-- <i class="right fas fa-angle-left"></i> --}}
              </p>
             </a>
           </li>  
           @endif
           {{-- Auditor Controller Dashboard --}}
-@if ( $adminRole==2 ||$adminRole ==0 )
+@if ( $adminRole==4 ||$adminRole ==1 )
     
 
           <li class="nav-item has-treeview menu-open">
@@ -64,10 +83,11 @@
             </li>
 
 @endif
-@if ($adminRole ==3 ||$adminRole ==0 )
+
+@if ($adminRole ==3 ||$adminRole ==1)
     
 
-{{--            ..............bank.......................--}}
+          {{--..............bank.......................--}}
          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -172,18 +192,18 @@
 
 
 
-         @if ($adminRole==2 ||$adminRole ==0 )
+         @if ($adminRole == 1 )
              
          
           {{--.......................question.....................--}}
-          {{-- <li class="nav-item has-treeview">
+           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
                     Question
-                    <i class="fas fa-angle-left right"></i> --}}
+                    <i class="fas fa-angle-left right"></i>
                     {{-- <span class="badge badge-info right">6</span> --}}
-                {{-- </p>
+                 </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
@@ -199,16 +219,17 @@
                     </a>
                 </li>
             </ul>
-        </li> --}}
+        </li> 
+        
 {{--            .................company.....................--}}
-        {{-- <li class="nav-item has-treeview">
+         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
                     Company
-                    <i class="fas fa-angle-left right"></i> --}}
+                    <i class="fas fa-angle-left right"></i> 
                     {{-- <span class="badge badge-info right">6</span> --}}
-                {{-- </p>
+                </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
@@ -224,17 +245,17 @@
                     </a>
                 </li>
             </ul>
-        </li> --}}
+        </li> 
   
   {{--            .................Certificate.....................--}}
-        {{-- <li class="nav-item has-treeview">
+      <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
                     Certificate
-                    <i class="fas fa-angle-left right"></i> --}}
+                    <i class="fas fa-angle-left right"></i> 
                     {{-- <span class="badge badge-info right">6</span> --}}
-                {{-- </p>
+               </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
@@ -250,37 +271,62 @@
                     </a>
                 </li>
             </ul>
-        </li> --}}
+        </li> 
 {{-- -----------------Audit Report---------------}}
-
+@endif
+@if($adminRole == 4 ||$adminRole == 1)
 <li class="nav-item has-treeview">
-  <a href="#" class="nav-link">
+
+
+  <a href="{{route('viewReport')}}" class="nav-link">
       <i class="nav-icon fas fa-copy"></i>
       <p>
-          Audit Report
+        View Audit Report
           <i class="fas fa-angle-left right"></i>
           {{-- <span class="badge badge-info right">6</span> --}}
       </p>
   </a>
-  <ul class="nav nav-treeview">
+  {{-- <ul class="nav nav-treeview">
       <li class="nav-item">
-          {{-- <a href="{{route('auditReport')}}" class="nav-link">
+           <a href="{{route('auditReport')}}" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Add Report</p>
-          </a> --}}
+          </a> 
       </li>
       <li class="nav-item">
-      <a href="{{route('viewReport')}}" class="nav-link">
+       <a href="{{route('viewReport')}}" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>View Report</p>
-          </a>
+          </a> 
       </li>
-  </ul>
+  </ul> --}}
 </li>
 
 @endif
+@if($adminRole==2 ||$adminRole == 1)
+<li class="nav-item has-treeview">
+  <a href="{{route('viewReportCertificateable')}}" class="nav-link">
+      <i class="nav-icon fas fa-copy"></i>
+      <p>
+          Audit Certificate
+          {{-- <i class="fas fa-angle-left right"></i> --}}
+          {{-- <span class="badge badge-info right">6</span> --}}
+      </p>
+  </a>
+  {{-- <ul class="nav nav-treeview">
+      <li class="nav-item">
+      <a href="{{route('viewReportCertificateable')}}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Generate Certificate</p>
+          </a>
+      </li>
+  </ul> --}}
+</li>
 
-@if ($adminRole==0)
+
+@endif
+
+@if ($adminRole==2 || $adminRole==1)
 <li class="nav-item has-treeview">
   <a href="#" class="nav-link">
       <i class="nav-icon fas fa-copy"></i>
@@ -294,13 +340,13 @@
       <li class="nav-item">
           <a href="{{route('adminRegister')}}" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
-              <p>Add Register</p>
+              <p>Register Admin</p>
           </a>
       </li>
       <li class="nav-item">
       <a href="{{route('viewAdmins')}}" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
-              <p>View Admin</p>
+              <p>View Admins</p>
           </a>
       </li>
   </ul>

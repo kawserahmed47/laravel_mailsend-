@@ -1,10 +1,6 @@
-@extends('back.adminPanel')
-@section('title')
-{{$title}}
-    
-@endsection
-@section('dashboardContent')
+@extends('back.adminMaster')
 
+@section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -14,7 +10,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="">Dashboard</a></li>
               <li class="breadcrumb-item active">Edit Admin</li>
             </ol>
           </div>
@@ -27,49 +23,47 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-9">
-        @if (Session::get('message'))
-<p class="bg-danger text-center">{{ Session::get('message') }}</p>
-
-@endif
+          @if (Session::get('message'))
+            <p class="bg-info text-center">{{ Session::get('message') }}</p>
+          @endif
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Edit Admin</h3>
-          
-
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fas fa-minus"></i></button>
               </div>
             </div>
-          <form action="{{route('adminUpdate',$results->id)}}" method="POST" > 
+          <form action="{{route('updateAdmin',Auth::guard('admin')->user()->id)}}" method="POST" enctype="multipart/form-data" > 
             @csrf
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">Admin Name</label>
-              <input type="text" name="name" id="inputName" value="{{$results->name}}" class="form-control">
+              <input type="text" name="name" id="inputName" value="{{$result->name}}" class="form-control">
               </div>
+              
               <div class="form-group">
-                <label for="inputName">Email</label>
-              <input type="text" name="email" id="inputName" value="{{$results->email}}" class="form-control">
+                <label for="inputName">Old Password</label>
+                <input type="password" name="password" id="inputName"  class="form-control">
               </div>
               <div class="form-group">
                 <label for="inputName">New Password</label>
-              <input type="password" name="password" id="inputName"  class="form-control">
+                <input type="password" name="new_password" id="inputName"  class="form-control">
               </div>
               <div class="form-group">
-                <label for="inputName">Confirm Password</label>
-              <input type="password" name="conform_password" id="inputName"  class="form-control">
+                <label for="exampleInputFile">Insert Image</label> 
+                <div class="input-group">
+                  <div class="custom-file">
+                  <input type='file' name="image" id="imgInp_slider" />
+                  <img style="width: 100px; height: 100px;" id="blah_slider" src="" alt="Preview" />
+                </div>
+                </div>
               </div>
-             @if ($results->status !=3)
-             <div class="form-group">
-              <label for="inputName">Status</label>
-             <select name="status" id="selectStatus">
-             <option value="1">Active</option>
-             <option value="0">Inactive</option>
-             </select>
-            </div>
-                 
-             @endif
+
+              <div class="form-group">
+               
+                <img style="height: 100px; width:100px" src="{{asset($result->image)}}" alt="Profile Picture">
+              </div>
              
             </div>
             <!-- /.card-body -->
@@ -91,9 +85,25 @@
     
 
 @endsection
-@section('extraJquery')
-<script>
+@section('extraJS')
+{{-- <script>
 $("#selectStatus").val({{ $results->status }});
 </script>
-    
+     --}}
+
+     <script>
+      function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                  $('#blah_slider').attr('src', e.target.result);
+              }
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+      $("#imgInp_slider").change(function(){
+          readURL(this);
+      });
+     
+      </script>
 @endsection

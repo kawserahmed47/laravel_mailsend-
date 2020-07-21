@@ -35,20 +35,22 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header">
-          @if (Session::get('name'))
+          {{-- @if (Session::get('name'))
           {{ Session::get('name') }}
-          @endif
+          @endif --}}
+          {{Auth::guard('admin')->user()->name}}
 
         </span>
           <div class="dropdown-divider"></div>
-        <a href="{{route('adminLogout')}}" class="dropdown-item">
-            <i class="fas ion-log-out mr-2"></i>Logout
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+      <a href="{{route('editAdmin',Auth::guard('admin')->user()->id)}}" class="dropdown-item">
             <i class="fas fa-user mr-2"></i> Profile
            
           </a>
+          <a href="{{route('adminLogout')}}" class="dropdown-item">
+            <i class="fas fa-power-off mr-2"></i>Logout
+          </a>
+          <div class="dropdown-divider"></div>
+          
          
           
         </div>

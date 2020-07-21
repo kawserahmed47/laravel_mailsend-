@@ -6,23 +6,26 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Set Role</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body"> 
       <p id="adminName"></p>
-      <form action="" method="POST">
+      <form action="{{route('changeRole')}}" class="form-group" method="POST">
         @csrf
-        <input type="text" id="admin_id" name="id" value="">
+        <input type="hidden" class="" id="admin_id" name="id" value="">
         <label for="">Select Role</label>
-        <select name="role" id="">
-          <option value="99">--Select--</option>
-          <option value="2">Auditor</option>
-          <option value="3">Contacts</option>
-        </select>
-      <a href="">Submit</a>
+        <select class="form-control" name="role" id="">
+          <option value="0">--Select--</option>
+          <option value="1">Developer</option>
+          <option value="3">Administration</option>
+          <option value="4">Auditor</option>
+         
+        </select><br>
+        <button class="btn btn-primary"  type="submit">Update</button>
+     
       </form>
       </div>
       <div class="modal-footer">
@@ -70,7 +73,6 @@
                       <th style="width: 10px">#</th>
                       <th>Name</th>
                       <th>Email</th>
-                     
                       <th>Status</th>
                       <th>Action</th>
                     </tr>
@@ -86,25 +88,44 @@
                       <td>{{$result->name }}</td>
                       <td> {{$result->email}} </td>
                      <td>
-                     @if($result->role ==2 )
-                    <span class="badge badge-info" >Auditor </span>
-                 @elseif($result->role ==0)
-                 <span class="badge badge-success" >Super admin</span>
-                 @elseif($result->role ==3)
-                 <span class="badge badge-secondary" >Administration</span>
-                 @elseif($result->role ==1)
-                 <span class="badge badge-warning" >New admin</span>
-                 @else 
-                 <span class="badge badge-danger" > Inactive</span>
-                 <button type="button" class="badge badge-danger adminID" data-toggle="modal" data-target="#exampleModal" data-id="{{$result->id }}" data-name="{{ $result->name}}">
-                  Inactive
-                </button>
-                 @endif
+                      @if($result->role ==0)
+                      <button type="button" class="badge badge-warning adminID" data-toggle="modal" data-target="#exampleModal" data-id="{{$result->id }}" data-name="{{ $result->name}}">
+                      New Registration
+                      </button>
+                       
+                      @elseif($result->role ==1)
+                      <button type="button" class="badge badge-primary adminID" data-toggle="modal" data-target="#exampleModal" data-id="{{$result->id }}" data-name="{{ $result->name}}">
+                        Developer
+                        </button>
+                        {{-- <span class="badge badge-primary" >Developer</span> --}}
+                      @elseif($result->role ==2)
+                      {{-- <button type="button" class="badge badge-success adminID" data-toggle="modal" data-target="#exampleModal" data-id="{{$result->id }}" data-name="{{ $result->name}}">
+                        CEO
+                        </button> --}}
+                        <span class="badge badge-success">CEO</span>
+                      @elseif($result->role ==3)
+                      <button type="button" class="badge badge-secondary adminID" data-toggle="modal" data-target="#exampleModal" data-id="{{$result->id }}" data-name="{{ $result->name}}">
+                        Administration
+                        </button>
+                        {{-- <span class="badge badge-secondary" >Administration</span> --}}
+                      @elseif($result->role ==4)
+                        <button type="button" class="badge badge-info adminID" data-toggle="modal" data-target="#exampleModal" data-id="{{$result->id }}" data-name="{{ $result->name}}">
+                          Auditor
+                        </button>
+                        {{-- <span class="badge badge-info" >Auditor</span> --}}
+                      @else
+                        {{-- <span class="badge badge-danger" > Inactive</span> --}}
+                        {{-- <button type="button" class="badge badge-danger adminID" data-toggle="modal" data-target="#exampleModal" data-id="{{$result->id }}" data-name="{{ $result->name}}">
+                          Inactive
+                        </button> --}}
+                      @endif
                      </td>
                       <td>
-                        <a class=" badge bg-primary" href="{{route('editAdmin',$result->id)}}">Edit</a>
-                      @if ($result->role !=0)
+                        {{-- <a class=" badge bg-primary" href="{{route('editAdmin',$result->id)}}">Edit</a> --}}
+                      @if ($result->role !=2)
+                     
                       <a  onclick="return confirm('Are you sure?')" class=" badge bg-danger" href="{{route('deleteAdmin',$result->id)}}">Delete</a>
+                   
                       @endif
                       </td>
                     </tr>

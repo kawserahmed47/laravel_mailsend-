@@ -4,17 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 
-use App\Admin;
+use App\Audit;
+use App\Certificate;
+use App\Company;
+use App\Question;
+use App\Report;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('admin');
+    // }
 
 
 
@@ -36,6 +40,29 @@ class DashboardController extends Controller
         return view('back.pages.admin.viewAdmins',$data);
 
     }
+    public function ceodashboard(){
+        $data =array();
+        $data['audits']=Report::all()->count();
+        $data['companies']=Company::where('status',1)->count();
+        $data['questions']=Question::all()->count();
+        $data['certificaes']=Certificate::all()->count();
+        $data['results']=Certificate::all();
+        return view('back.pages.ceodashboard',$data);
+
+    }
+
+    // public function auditorDashboard(){
+    //     $data =array();
+    //     $data['audits']=Report::all()->count();
+    //     $data['companies']=Company::all()->count();
+    //     $data['questions']=Question::all()->count();
+    //     $data['certificaes']=Certificate::all()->count();
+    //     $data['results']=Certificate::all();
+    //     return view('back.pages.auditorDashboard',$data);
+    // }
+
+
+
  public function editAdmin($id){
      
 

@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-use Illuminate\Support\Facades\Auth;
-use Closure;
 
-class AuditorMiddleware
+use Closure;
+use Illuminate\Support\Facades\Auth;
+class CEOmiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class AuditorMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::guard('admin')->check() && (Auth::guard('admin')->user()->role ==1 || Auth::guard('admin')->user()->role ==4) ){
+        if(Auth::guard('admin')->check() && (Auth::guard('admin')->user()->role ==1 || Auth::guard('admin')->user()->role ==2) ){
             return $next($request);
 
        }else{

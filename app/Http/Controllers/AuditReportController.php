@@ -62,7 +62,8 @@ class AuditReportController extends Controller
     $data['company']= $com;
     $data['certificate']= $id;
     $data['stage']= $stage;
-    $data['questions']= DB::table('questions')->where('stage',$stage)->where('certificate_id', $id)->paginate(20);
+    $data['questions']= DB::table('questions')->where('stage',$stage)->where('certificate_id', $id)->get();
+    // $data['questions']= DB::table('questions')->where('stage',$stage)->where('certificate_id', $id)->paginate(20);
     return view('back.pages.auditReport.demoReportInsert',$data);
    }
 
@@ -211,7 +212,8 @@ class AuditReportController extends Controller
         //  $data['companies']= $company;
         //  $data['certificates']= $certificate;
         //  $data['stage']=  $stage;
-        $data['questions']= DB::table('questions')->where('stage',$stage)->where('certificate_id', $certificate)->paginate(20);
+        // $data['questions']= DB::table('questions')->where('stage',$stage)->where('certificate_id', $certificate)->paginate(20);
+        $data['questions']= DB::table('questions')->where('stage',$stage)->where('certificate_id', $certificate)->get();
         $data['result']=Report::where('id', $id)->first();
         return view('back.pages.auditReport.editReport',$data);
 

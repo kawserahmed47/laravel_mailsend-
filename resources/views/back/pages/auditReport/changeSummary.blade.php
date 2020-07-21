@@ -193,22 +193,22 @@
 
                             <tr style="height: 50px;">
                                 <td scope="col" class=""  style="width: 30%;"><span>Are quoted man-days adequate?</span></td>
-                                <td scope="col" ><input type="text" name="quoted_man" class=" table-striped form-control ninput-lg " placeholder="Please Enter Yes/No" style="border: none;"> </td>
+                                <td scope="col" ><input required type="text" name="quoted_man" class=" table-striped form-control ninput-lg " placeholder="Please Enter Yes/No" style="border: none;"> </td>
                             </tr>
 
                             <tr style="height: 50px;">
                                 <td scope="col" class=""  style="width: 30%;"><span> Any change in employee detail? </span></td>
-                                <td scope="col" ><input type="text" name="employee_detail" class=" table-striped form-control ninput-lg " placeholder="Please Enter Yes/No" style="border: none;"> </td>
+                                <td scope="col" ><input required type="text" name="employee_detail" class=" table-striped form-control ninput-lg " placeholder="Please Enter Yes/No" style="border: none;"> </td>
                             </tr>
 
                             <tr style="height: 50px;">
                                 <td scope="col" class=""  style="width: 30%;"><span> Any Change in Scope? </span></td>
-                                <td scope="col" ><input type="text" name="change_scope" class=" table-striped form-control ninput-lg "placeholder="Please Enter Yes/No" style="border: none;"> </td>
+                                <td scope="col" ><input required type="text" name="change_scope" class=" table-striped form-control ninput-lg "placeholder="Please Enter Yes/No" style="border: none;"> </td>
                             </tr>
 
                             <tr style="height: 50px;">
                                 <td scope="col"  class=""  ><span>Any additional Information:  </span></td>
-                                <td scope="col"  ><input type="text"  name="additional_information" placeholder="Please Enter Yes/No" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
+                                <td scope="col"  ><input required type="text"  name="additional_information" placeholder="Please Enter Yes/No" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
                             </tr>
 
 
@@ -240,50 +240,50 @@
 
 
                             <tr style="height: 50px;">
-                                <td scope="col" ><input type="text" placeholder="Example: Minor NC" name="improvement_area[1][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
-                                <td scope="col" ><input type="text"  placeholder="Write your statement..." name="improvement_area[1][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
+                                <td scope="col" ><input required type="text" placeholder="Example: Minor NC" name="improvement_area[1][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
+                                <td scope="col" ><input required type="text"  placeholder="Write your statement..." name="improvement_area[1][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr style="height: 50px;">
                                 <td scope="col" class=""  style="width: 30%;">
-                                    <input type="text" name="improvement_area[2][]" class=" table-striped form-control ninput-lg " style="border: none;">
+                                    <input required type="text" name="improvement_area[2][]" class=" table-striped form-control ninput-lg " style="border: none;">
                                 </td>
-                                <td scope="col" ><input type="text" name="improvement_area[2][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
+                                <td scope="col" ><input required type="text" name="improvement_area[2][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr style="height: 50px;">
                                 <td scope="col" class=""  style="width: 30%;">
-                                    <input type="text" name="improvement_area[3][]" class=" table-striped form-control ninput-lg " style="border: none;">
+                                    <input type="text" required name="improvement_area[3][]" class=" table-striped form-control ninput-lg " style="border: none;">
                                 </td>
-                                <td scope="col" ><input type="text" name="improvement_area[3][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
+                                <td scope="col" ><input required type="text" name="improvement_area[3][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr style="height: 50px;">
                                 <td scope="col" class=""  style="width: 30%;">
-                                    <input type="text" name="improvement_area[4][]" class=" table-striped form-control ninput-lg " style="border: none;">
+                                    <input type="text" required name="improvement_area[4][]" class=" table-striped form-control ninput-lg " style="border: none;">
                                 </td>
-                                <td scope="col" ><input type="text" name="improvement_area[4][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
+                                <td scope="col" ><input required type="text" name="improvement_area[4][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr style="height: 50px;">
                                 <td scope="col" class=""  style="width: 30%;">
-                                    <input type="text" name="improvement_area[5][]" class=" table-striped form-control ninput-lg " style="border: none;">
+                                    <input type="text" required name="improvement_area[5][]" class=" table-striped form-control ninput-lg " style="border: none;">
                                 </td>
-                                <td scope="col" ><input type="text" name="improvement_area[5][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
+                                <td scope="col" ><input required type="text" name="improvement_area[5][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr style="height: 50px;">
                                 <td scope="col" class=""  style="width: 30%;">
-                                    <input type="text" name="improvement_area[6][]" class=" table-striped form-control ninput-lg " style="border: none;">
+                                    <input type="text" required name="improvement_area[6][]" class=" table-striped form-control ninput-lg " style="border: none;">
                                 </td>
-                                <td scope="col" ><input type="text" name="improvement_area[6][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
+                                <td scope="col" ><input required type="text" name="improvement_area[6][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr style="height: 50px;">
                                 <td scope="col" class=""  style="width: 30%;">
-                                    <input type="text" name="improvement_area[7][]" class=" table-striped form-control ninput-lg " style="border: none;">
+                                    <input type="text" required name="improvement_area[7][]" class=" table-striped form-control ninput-lg " style="border: none;">
                                 </td>
-                                <td scope="col" ><input type="text" name="improvement_area[][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
+                                <td scope="col" ><input required type="text" name="improvement_area[][]" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
                             </tr>
 
 
@@ -330,7 +330,7 @@
                             <tr style="height: 50px;">
                                 <td scope="col" class="" colspan="2" style="width: 30%;">
                                     <p class="text-left m-3">Non Conformities Raised<br>
-                                        <input  class="input text-left pl-2" name="nonconformatise" type="text"> <span class="underline"></span>
+                                        <input required class="input text-left pl-2" name="nonconformatise" type="text"> <span class="underline"></span>
                                         <label
                                             for="">Minor/Major Non conformance identified in the Stage 1 audit, details of Non Conformance in  F50.
                                     Please respond by using your own corrective action form and include the root cause analysis with systemic corrective action. Failure to include root cause analysis with systemic corrective action will result in your responses being rejected by Lead Auditor
@@ -366,13 +366,13 @@
 
                             <tr style="height: 50px;" class="text-left center">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[1][]" value="1" id="a">
+                                        <input required type="radio" class="form-check-input" name="declaration[1][]" value="1" id="a">
                                         <label class="" for="defaultInline3"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[1][]" value="0" id="a">
+                                        <input required type="radio" class="form-check-input" name="declaration[1][]" value="0" id="a">
                                         <label class="" for="defaultInline4"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -384,13 +384,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[2][]" value="1" id="b">
+                                        <input type="radio" required class="form-check-input" name="declaration[2][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[2][]" value="0" id="b">
+                                        <input type="radio" required class="form-check-input" name="declaration[2][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -400,13 +400,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[3][]" value="1" id="b">
+                                        <input required type="radio" class="form-check-input" name="declaration[3][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[3][]"  value="0"id="b">
+                                        <input required type="radio" class="form-check-input" name="declaration[3][]"  value="0"id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -416,13 +416,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[4][]" value="1" id="b">
+                                        <input required type="radio" class="form-check-input" name="declaration[4][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[4][]" value="0" id="b">
+                                        <input required type="radio" class="form-check-input" name="declaration[4][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -432,13 +432,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[5][]" value="1" id="b">
+                                        <input required type="radio" class="form-check-input" name="declaration[5][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[5][]" value="0" id="b">
+                                        <input required type="radio" class="form-check-input" name="declaration[5][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -448,13 +448,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[6][]" value="1" id="b">
+                                        <input required type="radio" class="form-check-input" name="declaration[6][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[6][]" value="0" id="b">
+                                        <input required type="radio" class="form-check-input" name="declaration[6][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -464,13 +464,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[7][]" value="1" id="b">
+                                        <input required type="radio" class="form-check-input" name="declaration[7][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[7][]" value="0" id="b">
+                                        <input type="radio" required class="form-check-input" name="declaration[7][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -481,13 +481,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[8][]" value="1" id="b">
+                                        <input type="radio" required class="form-check-input" name="declaration[8][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[8][]" value="0" id="b">
+                                        <input type="radio" required class="form-check-input" name="declaration[8][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -498,13 +498,13 @@
 
                             <tr style="height: 50px;" class="text-left">
                                 <td scope="col"  class="text-center"><div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[9][]" value="1" id="b">
+                                        <input required type="radio" class="form-check-input" name="declaration[9][]" value="1" id="b">
                                         <label  for="defaultInline1"><p class="icon">&#10004;</p></label>
                                     </div>
 
                                     <!-- Default inline 2-->
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="form-check-input" name="declaration[9][]" value="0" id="b">
+                                        <input required type="radio" class="form-check-input" name="declaration[9][]" value="0" id="b">
                                         <label class="" for="defaultInline2"><p class="icon">&#10060;</p></label>
                                     </div>
 
@@ -542,7 +542,7 @@
                             <tbody>
 
                             <tr style="height: 50px;">
-                                <td scope="col" class="" colspan="2" style="width: 30%;"><strong>Sign Off :</strong><input class="form-control-sm" type="text" name="sign_off_date">  </td>
+                                <td scope="col" class="" colspan="2" style="width: 30%;"><strong>Sign Off :</strong><input required class="form-control-sm" type="text" name="sign_off_date">  </td>
                                 {{-- <td><input type="date" name="sign_off_date"> </td> --}}
                                 {{--                                <td scope="col" ><input type="text" name="company_name" class=" table-striped form-control ninput-lg " style="border: none;"> </td>--}}
                             </tr>
@@ -560,7 +560,7 @@
                                     <div class="form-group row">
                                         <label for="staticEmail">Name of Auditor :</label>
                                         <div class="col-sm-6">
-                                            <input type="text" name="auditorName" class="form-control" id="" >
+                                            <input type="text" required name="auditorName" class="form-control" id="" >
                                         </div>
                                     </div>
 
@@ -577,7 +577,7 @@
                                     <div class="form-group row">
                                         <label for="staticEmail">Name:</label>
                                         <div class="col-sm-6">
-                                            <input type="text" name="clientName" class="form-control"  >
+                                            <input type="text" required name="clientName" class="form-control"  >
                                         </div>
                                     </div>
 
@@ -591,7 +591,7 @@
                                     <div class="form-group row">
                                         <label for="staticEmail">Designation:</label>
                                         <div class="col-sm-6">
-                                            <input type="text" name="clidentDesignation" class="form-control" id="" >
+                                            <input type="text" required name="clidentDesignation" class="form-control" id="" >
                                         </div>
                                     </div>
 

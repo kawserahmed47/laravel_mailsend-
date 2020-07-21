@@ -108,88 +108,88 @@
                             <tr style="height: 50px;">
                                 <td scope="col" class=""  style="width: 30%;"> <span for="">Name of the Organization</span> </td>
                               
-                                <td scope="col" ><input type="text" name="company_name" class=" table-striped form-control ninput-lg " style="border: none;"> </td>
+                                <td scope="col" ><input type="text" name="company_name" required class=" table-striped form-control ninput-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr style="height: 80px; width: 100%">
                                 <td scope="col" class=""  style="width: 30%;"><span>Address</span></td>
-                                <td scope="col" ><textarea  rows="4" cols="50"  type="text" name="address" class="form-control input-lg " style="border: none; height: 79px; margin-left: 10px;"></textarea> </td>
+                                <td scope="col" ><textarea  rows="4" cols="50"  type="text" required name="address" class="form-control input-lg " style="border: none; height: 79px; margin-left: 10px;"></textarea> </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span>Standard Name </span></td>
-                                <td scope="col" ><input type="text" name="standard_name" class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" ><input type="text" name="standard_name" required class="form-control input-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span>Site Address (If any) </span></td>
-                                <td scope="col" ><input type="text" name="site_address" class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" ><input type="text" name="site_address" required class="form-control input-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span mt-3>No. of Employees  </span></td>
-                                <td scope="col" ><input type="text" name="employees_num" class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" ><input type="text" required name="employees_num" class="form-control input-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span>No. Of Shift </span></td>
-                                <td scope="col" ><input type="text" name="shift_num" class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" ><input type="text" required name="shift_num" class="form-control input-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span>E mail id  </span></td>
-                                <td scope="col" ><input type="text" name="email" class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" ><input type="text" required name="email" class="form-control input-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span>Contact Person  </span></td>
-                                <td scope="col" ><input type="text" name="contact"  class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" ><input type="text" required name="contact"  class="form-control input-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span>Telephone/Fax  </span></td>
-                                <td scope="col" ><input type="text" name="mobile"  class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" ><input type="text" required name="mobile"  class="form-control input-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span> Scope </span></td>
-                                <td scope="col" ><input type="text" name="scope" class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" ><input type="text" required name="scope" class="form-control input-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span>Technical Area </span></td>
-                                <td scope="col" ><input type="text" name="technical_area" class="form-control input-lg " style="border: none;">  </td>
+                                <td scope="col" ><input type="text" required name="technical_area" class="form-control input-lg " style="border: none;">  </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span>Exclusions </span></td>
-                                <td scope="col" ><input type="text" name="exclusion" class="form-control input-lg " style="border: none;"></td>
+                                <td scope="col" ><input type="text" required name="exclusion" class="form-control input-lg " style="border: none;"></td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span> Audit Team </span></td>
-                                <td scope="col" ><input type="text" name="audit_team" class="form-control input-lg " style="border: none;">
+                                <td scope="col" ><input type="text" required name="audit_team" class="form-control input-lg " style="border: none;">
                                 </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span> Starting date of Audit </span></td>
-                                <td scope="col" ><input type="text" name="s_audit_date" class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" ><input type="text" required name="s_audit_date" class="form-control input-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span>End Date of Audit </span></td>
-                                <td scope="col" ><input type="text" name="e_audit_date" class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" ><input type="text" required name="e_audit_date" class="form-control input-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span> Brief about the organization </span></td>
-                                <td scope="col" ><input type="text" name="brief" class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" ><input type="text" required name="brief" class="form-control input-lg " style="border: none;"> </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span>Audit Objective  </span></td>
-                                <td scope="col" ><input type="text" name="objective" class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" ><input type="text" required name="objective" class="form-control input-lg " style="border: none;"> </td>
                             </tr>
                             </tbody>
                         </table>

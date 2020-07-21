@@ -9,7 +9,7 @@ class BankerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('administration');
     }
     public function addBanker(){
         $data = array();

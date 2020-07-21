@@ -90,14 +90,23 @@
         </div>
         <table>
             <tr>
-                <td class="text-left" style="width: 50%">
-                    Sustainable Management System Inc. 
-                    
+
+
+                <td class="" style=" width:25%">
+                    E-Tex Solution Ltd.  
                 </td>
-                <td class="text-right" style="width: 50%">
-                    Private & Confidential
-                   
+
+                <td style=" width:25% ">
                 </td>
+
+                <td style=" width:25% ">
+                </td>
+
+                <td class="text-center" style=" width:25% " >
+                     Private & Confidential  
+                </td>
+
+
             </tr>
         </table>
     </footer>
@@ -137,7 +146,7 @@
                         </label>
                       </td>
                       <td> 
-                      <a class="badge badge-success float-right" href="{{route('generatePdf',$changes->company_id)}}">Print PDF</a>
+                      {{-- <a class="badge badge-success float-right" href="{{route('generatePdf',$changes->company_id)}}">Print PDF</a> --}}
                       </td>
                   </tr>
               </table>

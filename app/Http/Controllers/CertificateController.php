@@ -6,12 +6,14 @@ use App\Certificate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use PDF;
-
+use App\Report;
+use DB;
 class CertificateController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auditor');
+        // $this->middleware('auditor');
+        $this->middleware('ceo');
     }
     public function addCertificate()
     {
@@ -95,19 +97,34 @@ class CertificateController extends Controller
 
 
 
-    public function createCertificate(){
-        return view('back.pages.certificate.createCertificate');
+    public function createCertificate($id){
+        $data= array();
+        $data['company']=DB::table('companies')->where('id',$id)->first();
+        $data['result']=Report::where('company_id',$id)->where('stage',2)->first();
+        return view('back.pages.certificate.createCertificate',$data);
     }
 
-    public function certificateGenerate(){
+    public function certificateGenerate($id){
         // $data = array();
         // // $data['header'] ='Welcome to E-Tex Solution';
         // $data['company']=DB::table('companies')->where('id', $id)->first();
         // $data['result']=Report::where('company_id', $id)->first();
         // $data['changes']=DB::table('changes')->where('company_id', $id)->first();
         // $data['summaries']=DB::table('summaries')->where('company_id', $id)->first();
-        $pdf = PDF::loadView('back.pages.certificate.createCertificate');
-        return $pdf->download('certificate.pdf');
+          //$pdf = PDF::loadView('back.pages.certificate.createCertificate');
+          $data= array();
+          $data['company']=DB::table('companies')->where('id',$id)->first();
+          $data['result']=Report::where('company_id',$id)->where('stage',2)->first();
+         $pdf = PDF::loadView('back.pages.certificate.certificatemake',$data);
+        return $pdf->download("certificate$id.pdf");
+
+    }
+
+    public function viewReportCertificateable(){
+        $data = array();
+        $data['results']=Report::where('stage',2)->paginate(20);
+        return view('back.pages.certificate.viewAuditCompany',$data);
+
 
     }
 }

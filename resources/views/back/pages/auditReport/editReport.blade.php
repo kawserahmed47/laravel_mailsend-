@@ -198,7 +198,7 @@
                     <button type="submit" class="btn btn-primary float-right">Update</button>
                     <nav aria-label="...">
                         <ul class="pagination justify-content-center">
-                            {{$questions->links()}}
+                            {{-- {{$questions->links()}} --}}
                         </ul>
                     
                     </nav>

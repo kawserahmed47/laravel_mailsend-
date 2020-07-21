@@ -1,118 +1,98 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-    <title>Generate Certificate</title>
-    <style>
-      .container {
-  position: fixed;
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Create Certificate</title>
+  <style>
+    body{
+      margin: 0px;
+    }
+   .container {
+  position: relative;
 }
 
- .company{
- 
-  position: relative;
-  /* z-index: -2; */
-  /* bottom: 20px;
-  right: 20px; */
-  /* background-color: black; */
-  color: black;
-  margin-top:-541px;
-  margin-left:181px;
-  /* padding-left: 20px;
-  padding-right: 20px;  */
- }
- .address{
-   margin-left: 183px;
-
- }
- .scope{
-  margin-left:-415px;
+.center {
+  position: absolute;
+  top: 652px;
+  width: 494px;
+  margin-left: 470px;
   text-align: center;
+  /* font-size: 18px; */
+}
 
- }
- .certificate{
-   /* color:brown;
-   margin-top: ; */
-    color: red;
-    /* margin-top: ; */
-    /* margin-bottom: -27px; */
-    text-align: center;
-    margin-left:-455px;
-    margin-top: -16px;
- }
- .cdate{
-  margin-left: 246px;
-    margin-top: 123px;
+img { 
+  width: 100%;
+  height: auto;
+  /* opacity: 0.3; */
+}
+table{
+  text-align: left;
+}
 
- }
- .regnum{
-  margin-left: 246px;
-    margin-top: -58px;
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="{{asset('public/aimage/blank_certificate2.png')}}" alt="Cinque Terre" width="1000" height="300">
+    <div class="center">
+    <h1>{{$company->company_name}}</h1>
+     <p>{{$company->address}}</p>
+     <p>for</p>
+    <p>{{$company->scope}}</p>
+     <p>has been assesed and registered against the provision of</p>
+    <h1 style="color: red;">{{$result->certificate->certificate_name}} </h1>
+     <p>international Standard</p>
+     <p>with</p>
+     <table style="font-size: 14px;">
+       @php
+           $regnum =date("dmY") . $company->id;
+           $cdate = date("d/m/Y");
+           $cernum= strrev(date("dmY")) . $company->id;
+           $code = 4;
+           $issue = 01;
+       @endphp
+       <tr>
+         <td>Registration Number:</td>
+       <td>{{$regnum}}</td>
+         <td style="padding: 10px;">  </td>
+         <td>Certificate Number:</td>
+        <td>{{$cernum}}</td>
+       </tr>
+       <tr>
+        <td>Certificate Date:</td>
+       <td>{{$cdate}}</td>
+        <td style="padding: 10px;"></td>
+        <td>Code:</td>
+       <td>{{$code}}</td>
+      </tr>
+      <tr>
+        <td>Re-Certification Due Date:</td>
+        <td>28/06/2023</td>
+        <td style="padding: 10px;"></td>
+        <td>Exclusions</td>
+        <td>7.3, 7.5, 9.2</td>
+      </tr>
+       <tr>
+       <td>Issue No:</td>
+        <td>01</td>
+      </tr> 
 
-   
- }
- .cnum{
-  margin-left: 246px;
-    margin-top: -68px;
+     </table>
 
- }
- .issue{
-  margin-left: 246px;
-    margin-top: -25px;
-
- }
- .code{
-  margin-left: 246px;
-    margin-top: -69px;
-
- }
-   
-    </style>
-
-  </head>
-  <body>
-    {{-- <div class="bg" >
-         
-
-    </div> --}}
-    
-   <div class="">
-    <div class="">
-      <div class="">
-      <img src="{{asset('public/aimage/blank_certificate.jpg')}}" alt="Norway" style="width: 595px; height:842 px;">
-         <div class="">
-          <h4 class="company">Mahmud Fashion Limited</h4>
-          <p class="address">Baroipara, Ashulia, Savar, Dhaka-1340</p>
-          <p class="scope">Manufacturing, Washing /Non-washing & exporting of all <br> kinds of Denim/Knit Denim & Woven Items</p>
-          <h4 class="certificate">ISO 9001:2015</h4>
-          @php
-              $d = date("d/m/Y");
-              $cnum = strrev(date("dmY")) . "1";
-              $rn= date("dmY") . "1";
-          @endphp
-          <p class="cdate">{{$d}}</p>
-          <p class="regnum">{{$rn}}</p>
-          <p class="cnum">{{$cnum}}</p>
-          <p class="issue">01</p>
-          <p class="code">04</p>
-        </div> 
-
-      </div>
     </div>
+  </div>
 
 
-  </div> 
+{{-- <div>
+  <img style="height: 100%; width:100%" src="{{asset('public/aimage/blank_certificate1.jpg')}}" alt="">
+</div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  </body>
+<div class="content">
+  <h1>This is company Name</h1>
+</div> --}}
+  
+</body>
 </html>
