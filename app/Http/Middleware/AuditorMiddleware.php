@@ -15,7 +15,7 @@ class AuditorMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::guard('admin')->check() && (Auth::guard('admin')->user()->role ==1 || Auth::guard('admin')->user()->role ==4) ){
+        if(Auth::guard('admin')->check() && (Auth::guard('admin')->user()->role ==1 || Auth::guard('admin')->user()->role ==2 || Auth::guard('admin')->user()->role ==4) ){
             return $next($request);
 
        }else{

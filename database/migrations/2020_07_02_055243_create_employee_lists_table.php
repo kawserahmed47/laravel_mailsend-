@@ -15,12 +15,22 @@ class CreateEmployeeListsTable extends Migration
     {
         Schema::create('employee_lists', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('bankname')->nullable();
+            $table->string('company_name')->nullable();
             $table->string('name')->nullable();
             $table->string('designation')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('addresh')->nullable();
+            $table->string('phone_parsonal')->nullable();
+            $table->string('phone_official')->nullable();
             $table->string('email')->nullable();
+            $table->string('addresh')->nullable();
+            $table->string('bankname')->nullable();
+            $table->string('bank_account_number')->nullable();
+            $table->string('online_account_number')->nullable();
+            $table->string('nid_number')->nullable();
+            $table->string('passport_number')->nullable();
+            $table->string('image_nid')->default('default.png');
+            $table->string('image_passport')->default('default.png');
+            $table->string('image_driving')->default('default.png');
+            $table->string('document_pdf')->default('default.png');
             $table->string('details')->nullable();
             $table->timestamps();
         });

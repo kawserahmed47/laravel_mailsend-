@@ -30,7 +30,7 @@ class AuditReportController extends Controller
         $data['companies']=Company::all()->count();
         $data['questions']=Question::all()->count();
         $data['certificaes']=Certificate::all()->count();
-        $data['results']=Certificate::all();
+        $data['results']=Certificate::where('status', 1)->get();
         return view('back.pages.auditorDashboard',$data);
     }
 

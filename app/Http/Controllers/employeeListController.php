@@ -14,6 +14,9 @@ class employeeListController extends Controller
     public function index(){
         return view('back/employeeList/createList');
     }
+    public function allContacts(){
+        return view('back.pages.allContacts');
+    }
     public function create(Request $request){
         $employee = new EmployeeList();
         $employee->bankname = $request->bankname;

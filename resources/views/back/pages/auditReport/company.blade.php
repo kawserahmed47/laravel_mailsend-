@@ -153,22 +153,40 @@
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span> Scope </span></td>
-                                <td scope="col" ><input type="text" required name="scope" class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" >
+                                    
+                                    <textarea  rows="4" cols="50"  type="text" required name="address" class="form-control input-lg " style="border: none; height: 79px; margin-left: 10px;"></textarea>
+                                    
+                                    <input type="text" required name="scope" class="form-control input-lg " style="border: none;">
+                                 </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span>Technical Area </span></td>
-                                <td scope="col" ><input type="text" required name="technical_area" class="form-control input-lg " style="border: none;">  </td>
+                                <td scope="col" >
+                                    <textarea  rows="4" cols="50"  type="text" required name="technical_area" class="form-control input-lg " style="border: none; height: 79px; margin-left: 10px;"></textarea>
+{{--                                     
+                                    <input type="text" required name="technical_area" class="form-control input-lg " style="border: none;">  --}}
+                                 </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span>Exclusions </span></td>
-                                <td scope="col" ><input type="text" required name="exclusion" class="form-control input-lg " style="border: none;"></td>
+                                <td scope="col" >
+                                    <textarea  rows="4" cols="50"  type="text" required name="exclusion" class="form-control input-lg " style="border: none; height: 79px; margin-left: 10px;"></textarea>
+
+                                    {{-- <input type="text" required name="exclusion" class="form-control input-lg " style="border: none;"> --}}
+                                
+                                </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span> Audit Team </span></td>
-                                <td scope="col" ><input type="text" required name="audit_team" class="form-control input-lg " style="border: none;">
+                                <td scope="col" >
+                                    <input type="text" required placeholder="Lead Auditor:" name="audit_team" class="form-control input-lg " style="border: none;">
+
+                                    <input type="text" required placeholder="Audit duration Man day(s):" name="audit_duration" class="form-control input-lg " style="border: none;">
+                                   
                                 </td>
                             </tr>
 
@@ -184,12 +202,18 @@
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span> Brief about the organization </span></td>
-                                <td scope="col" ><input type="text" required name="brief" class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" >
+                                    <textarea  rows="4" cols="50"  type="text" required name="brief" class="form-control input-lg " style="border: none; height: 79px; margin-left: 10px;"></textarea>
+                                    {{-- <input type="text" required name="brief" class="form-control input-lg " style="border: none;">  --}}
+                                </td>
                             </tr>
 
                             <tr>
                                 <td scope="col" class=""  style="width: 30%;"><span>Audit Objective  </span></td>
-                                <td scope="col" ><input type="text" required name="objective" class="form-control input-lg " style="border: none;"> </td>
+                                <td scope="col" >
+                                    <textarea  rows="4" cols="50"  type="text" required name="objective" class="form-control input-lg " style="border: none; height: 79px; margin-left: 10px;"></textarea>
+                                    {{-- <input type="text" required name="objective" class="form-control input-lg " style="border: none;">  --}}
+                                </td>
                             </tr>
                             </tbody>
                         </table>

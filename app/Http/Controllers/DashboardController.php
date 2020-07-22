@@ -15,22 +15,24 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('admin');
-    // }
+     public function __construct()
+     {
+        $this->middleware('admin');
+     }
 
 
 
     public function dashboard(){
         $data = array();
         $data['title']=""; 
+        $data['audits']=Report::all()->count();
+        $data['companies']=Company::where('status',1)->count();
+        $data['pcertificates']=Report::where('status',0)->where('stage',2)->count();
+        $data['certificaes']=Certificate::all()->count();
         return view('back.pages.dashboard',$data);
     }
 
-    public function allContacts(){
-        return view('back.pages.allContacts');
-    }
+   
 
     public function viewAdmins(){
         $data = array();
@@ -44,7 +46,7 @@ class DashboardController extends Controller
         $data =array();
         $data['audits']=Report::all()->count();
         $data['companies']=Company::where('status',1)->count();
-        $data['questions']=Question::all()->count();
+        $data['pcertificates']=Report::where('status',0)->where('stage',2)->count();
         $data['certificaes']=Certificate::all()->count();
         $data['results']=Certificate::all();
         return view('back.pages.ceodashboard',$data);

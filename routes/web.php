@@ -36,7 +36,7 @@ Route::get('/index', function () {
 //Dashboard Controller 
 
 Route::get('/','DashboardController@dashboard')->name('dashboard');
-Route::get('/dashboard/allContacts','DashboardController@allContacts')->name('allContacts');
+Route::get('/dashboard/allContacts','employeeListController@allContacts')->name('allContacts');
 // Route::get('/administrationdashboard','DashboardController@allContacts')->name('administration');
 Route::get('/auditordashboard','AuditReportController@auditorDashboard')->name('auditorDashboard');
 Route::get('/ceodashboard', 'DashboardController@ceodashboard')->name('ceodashboard');
@@ -61,6 +61,13 @@ Route::post('/dashboard/bankerSearch','BankerController@bankerSearch')->name('ba
 Route::get('/dashboard/deleteBanker/{id}','BankerController@deleteBanker')->name('deleteBanker');
 Route::get('/dashboard/editBanker/{id}','BankerController@editBanker')->name('editBanker');
 Route::post('/dashboard/updateBanker/{id}','BankerController@updateBanker')->name('updateBanker');
+
+//.....................legalDocumen...............
+Route::get('dashboard/legalDocument','LegalDocumentController@legalDocument')->name('legalDocument');
+Route::post('dashboard/createDocument','LegalDocumentController@createDocument')->name('createDocument');
+Route::get('dashboard/documentDelete/{ID}','LegalDocumentController@documentDelete')->name('documentDelete');
+Route::get('dashboard/legalDocumentEdit/{ID}','LegalDocumentController@legalDocumentEdit')->name('legalDocumentEdit');
+Route::post('/dashboard/updateLegalDocument','LegalDocumentController@updateLegalDocument')->name('updateLegalDocument');
 
 
 //....................employee................
@@ -151,3 +158,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+// Mail 
+Route::get('/sendMail', 'MailController@sendMail')->name('sendMail');

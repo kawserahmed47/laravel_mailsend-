@@ -49,12 +49,12 @@
                         <th>Sl</th>
                         <th>Company Name</th>
                         <th>Address</th>
-                        <th>Email</th>
-                        <th>Phone</th>
+                        <th style="">Email</th>
+                        {{-- <th>Phone</th> --}}
                         <th>Mobile</th>
-                        <th>Hot Line</th>
-                        <th>Descripton</th>
-                        <th>Status</th>
+                        {{-- <th>Hot Line</th> --}}
+                        {{-- <th>Descripton</th> --}}
+                        {{-- <th>Status</th> --}}
                         <th>Action</th>
 
                     </tr>
@@ -66,22 +66,22 @@
                             <td>{{$key+1}} </td>
                             <td>{{$company->company_name}} </td>
                             <td>{{$company->address}} </td>
-                            <td>{{$company->email}} </td>
-                            <td>{{$company->phone}} </td>
-                            <td>{{$company->mobile}} </td>
-                            <td>{{$company->hotline}} </td>
-                            <td>{{$company->description}} </td>
-                            <td>
+                            <td><a href="mailto:{{$company->email}}">{{$company->email}}</a></td>
+                            {{-- <td>{{$company->phone}} </td> --}}
+                            <td><a href="tel:{{$company->mobile}}">{{$company->mobile}}</a></td>
+                            {{-- <td>{{$company->hotline}} </td> --}}
+                            {{-- <td>{{$company->description}} </td> --}}
+                            {{-- <td>
                                 @if($company->status == true)
-                                    <span class="btn btn-success">Published</span>
+                                    <span class="badge badge-success">Published</span>
                                 @else
-                                    <span class="btn btn-danger">Pending</span>
+                                    <span class="badge badge-danger">Pending</span>
                                 @endif
 
-                            </td>
+                            </td> --}}
                             <td>
-                             <a href="{{route('editCompany',$company->id)}}" class="btn btn-success">Edit</a>
-                             <a  class="btn btn-danger" href="{{route('deleteCompany',$company->id)}}">Delete</a>
+                             <a href="{{route('editCompany',$company->id)}}" class="badge badge-success">Edit</a>
+                             <a  class="badge badge-danger" href="{{route('deleteCompany',$company->id)}}">Delete</a>
                              </td>
 
                         </tr>
@@ -106,11 +106,11 @@
                             <th>Company Name</th>
                             <th>Address</th>
                             <th>Email</th>
-                            <th>Phone</th>
+                            {{-- <th>Phone</th> --}}
                             <th>Mobile</th>
-                            <th>Hot Line</th>
-                            <th>Descripton</th>
-                            <th>Status</th>
+                            {{-- <th>Hot Line</th> --}}
+                            {{-- <th>Descripton</th> --}}
+                            {{-- <th>Status</th> --}}
                             <th>Action</th>
                         </tr>
                     </tfoot>

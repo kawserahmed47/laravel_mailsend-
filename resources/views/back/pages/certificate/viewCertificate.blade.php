@@ -50,6 +50,7 @@
                                 <th>Sl</th>
                                 <th>Certificate Name</th>
                                 <th>Description</th>
+                                <th>Image</th>
                                 <th>Status</th>
                                 <th>Action</th>
 
@@ -62,17 +63,18 @@
                                         <td>{{$key+1}} </td>
                                         <td>{{$Certificate->certificate_name}} </td>
                                         <td>{{$Certificate->description}} </td>
+                                    <td><img style="height: 100px; width:100px" src="{{asset($Certificate->image)}}" alt="IMG"></td>
                                         <td>
                                             @if($Certificate->status == true)
-                                                <span class="btn btn-success">Published</span>
+                                                <span class="badge badge-success">Published</span>
                                             @else
-                                                <span class="btn btn-danger">Pending</span>
+                                                <span class="badge badge-danger">Pending</span>
                                             @endif
 
                                         </td>
                                         <td>
-                                             <a href="{{route('editCertificate',$Certificate->id)}}" class="btn btn-success">Edit</a>
-                                             <a  class="btn btn-danger" href="{{route('deleteCertificate',$Certificate->id)}}">Delete</a>
+                                             <a href="{{route('editCertificate',$Certificate->id)}}" class="badge badge-success">Edit</a>
+                                             <a  class="badge badge-danger" href="{{route('deleteCertificate',$Certificate->id)}}">Delete</a>
                                         </td>
 
                                     </tr>
@@ -89,6 +91,7 @@
                                 <th>Sl</th>
                                 <th>Certificate Name</th>
                                 <th>Description</th>
+                                <th>Image</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>

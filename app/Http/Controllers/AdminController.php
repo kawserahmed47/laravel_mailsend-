@@ -266,5 +266,11 @@ class AdminController extends Controller
 
     }
 
+    // public function allContacts(){
+    //     return view('back.pages.allContacts');
+    // }
+
+
+
    
 }

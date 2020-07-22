@@ -29,6 +29,7 @@ class CreateCompaniesTable extends Migration
             $table->string('technical_area')->nullable();
             $table->text('exclusion')->nullable();
             $table->string('audit_team')->nullable();
+            $table->string('audit_duration')->nullable();
             $table->string('s_audit_date')->nullable();
             $table->string('e_audit_date')->nullable();
             $table->text('brief')->nullable();
